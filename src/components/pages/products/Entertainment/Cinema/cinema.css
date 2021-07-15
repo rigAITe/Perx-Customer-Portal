@@ -1,0 +1,11 @@
+.cinema-jumbotron {
+  background-image: url("../assets//cinemaBanner.svg");
+  background-repeat: no-repeat;
+  background-position:right;
+  height: 350px;
+  width: 100%;
+}
+
+.banner-text{
+    color: white;
+}

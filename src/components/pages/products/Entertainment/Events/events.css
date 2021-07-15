@@ -1,0 +1,26 @@
+.events-jumbotron {
+  background-image: url("../assets/eventsBanner.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 350px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* .jumbotron1 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-bottom: 100px;
+    padding-left: 20px;
+  padding-right: 20px;
+} */
+
+.banner-text {
+  color: white;
+}
+
+.product-default figure .event-image,
+.product-default figure .event-image {
+  height: 120%;
+}

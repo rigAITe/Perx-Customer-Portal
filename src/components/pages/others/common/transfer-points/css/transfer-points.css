@@ -1,0 +1,44 @@
+.btn-outline-secondary:hover {
+  background-color: #c3d8ff;
+  border-color: #6990dc;
+  color: #003cad;
+}
+
+.active-beneficiary-menu {
+  background-color: #c3d8ff;
+  border-color: #6990dc;
+  color: #003cad;
+}
+
+.btn-outline-secondary::selection {
+  background-color: #c3d8ff;
+  border-color: #6990dc;
+  color: #003cad;
+}
+
+::selection {
+    background-color: #c3d8ff;
+    color: #fff;
+}
+
+.beneficiary-list {
+  background-color: #f8f8f8;
+  color: black;
+  font-size: 12px;
+}
+
+.fa-trash {
+  color: #0037b0;
+}
+
+.highlight {
+  color: #0037b0;
+}
+
+button.mfp-close {
+  color: black;
+}
+
+.additional-message {
+  font-size: 12px;
+}

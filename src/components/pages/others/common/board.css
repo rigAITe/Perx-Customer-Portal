@@ -1,0 +1,437 @@
+label{
+    font-size: 1.1rem;
+}
+
+/* .form-control{
+    height: 2rem !important;
+} */
+
+.dashboard{
+    background-color: blue;
+    color: white;
+    /* display: flex; */
+    padding: 15px;
+}
+
+.dash-name{
+    border-radius: 50%;
+    border:  3px solid none;
+    background-color: white;
+    padding: 2rem;
+    /* margin-bottom: 0; */
+}
+
+.tier{
+    background-color: goldenrod;
+}
+
+.tier-body{
+    padding-left: 20px;
+}
+
+.tier-body h5{
+    color: gold;
+    font-size: 2rem;
+}
+
+.tier-inner{
+    background-color: #3333aa;
+    padding: 1.5rem;    
+}
+
+.tier-inner-1{
+    /* padding: 1.5rem;     */
+}
+
+.tier-bottom{
+    font-size: 1.2rem;
+    /* font-weight: 700; */
+}
+
+.tier-bottom span{
+    color: #eeb830 !important;
+}
+
+.tier-bottom a{
+    color: #fff !important;
+}
+
+.tier-bottom div{
+    color: #a5a5f5; 
+    font-weight: 600;
+}
+
+.tier-inner-1 img{
+    width: 80px;
+    padding-top: 15px;
+}
+
+.tier-list ul{
+    padding-left: 2rem;
+}
+
+.tier-list ul li{
+    list-style:disc ;
+}
+
+.next-tier{
+    text-align: end;
+    color: #a5a5f5; 
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dash-contact{
+    padding-left: 20px;
+}
+
+.dash-contact h5{
+    color: white;
+    margin-bottom: 0;
+}
+
+.dash-contact p{
+    font-size: 10px;
+}
+
+.dash-button-p{
+    border: 1px solid white;
+    color: white;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+    width: 30%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.upgrade{
+    color: #fff !important;
+}
+
+.card-bodie{
+    margin: 2rem;
+}
+
+.dash-info{
+    display: flex;
+}
+
+.inner-card{
+    margin-left:2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+.main, .jumbotron-container {
+    /* max-width: 100% !important; */
+    margin: 0 auto;
+}
+
+.card-header{
+    font-size: 1.1rem;
+}
+
+.card-header a{
+    font-size: 1.1rem !important;
+    color: #003cad !important;
+}
+
+.card-body p{
+    font-size: 1.3rem;
+    margin-bottom: .4rem;
+}
+
+.card-body strong{
+    color: black;
+}
+
+.card-body div{
+    padding-bottom: 1rem;
+}
+
+.points p {
+    font-size: 1.1rem;
+}
+
+.changePassword{
+    width: 100%;
+    margin: auto;
+}
+
+.address-book{
+    /* font-size: 1rem; */
+    color: black;
+    padding: 1.3rem;
+}
+
+.address-book p{
+    margin-bottom: 0;
+}
+
+.address-book :nth-child(1){
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.address-book :nth-child(2){
+    font-size: 1rem;
+}
+
+.address-book-inner{
+    display: flex;
+    padding-left: 13px;
+    align-items: center;
+    padding-bottom: 13px;
+}
+
+.address-book-inner img{
+    cursor: pointer;
+}
+
+.address-modal{
+    display: flex;
+    /* align-items: center; */
+    margin: auto;
+    max-height: 1000px;
+}
+
+.statement-head{
+    font-size: 1rem !important; 
+}
+
+tbody tr th{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+td{
+    font-size: .9rem !important;
+    /* background-color: #003cad; */
+}
+
+.statement-head td{
+    color: black;
+}
+
+.e-voucher{
+    display: flex;
+    border: 1px solid #316fe2;
+    padding: 2rem;
+    background-color: #c1d4f8;
+    color: #003cad;
+}
+
+.e-vouch{
+    font-size: 1.1rem;
+}
+
+.e-vouch p:nth-child(2),
+.e-vouch p:nth-child(3){
+    margin-bottom: .2rem;
+}
+
+.delivery{
+    padding-top: 2rem;
+}
+
+.delivery-addr p{
+    font-size: 1.1rem;
+}
+
+.delivery-addr{
+    font-size: 1.1rem;
+    padding-top: 1.2rem;
+}
+
+.delivery-addr p:nth-child(2){
+    padding-top: 1.3rem;
+    color: black;
+    font-weight: 600;
+}
+
+.delivery-addr p:nth-child(3){
+    padding-top: 1.2rem;
+    color: black;
+    padding-bottom: 1.2rem;
+}
+
+.delivery-tdg{
+    display: flex;
+    justify-content: space-between;
+    /* font-size: 1.1rem; */
+}
+
+.delivery-tdg div:nth-child(2){
+    color: black;
+}
+
+.completed{
+    color: green;
+}
+
+
+
+@media(min-width: 768px ) and ( max-width: 1023px ){
+    .dashboard{
+        display: flex;
+        align-items: center;
+    }
+
+    .dash-button-p{
+        max-height: 3rem;
+        width: 17%;        
+        font-size: 1.3rem;
+    }
+
+    .dash-info{
+        align-items: center;
+    }
+
+    .dash-image{
+        align-items: center;
+    }
+
+    .dash-name{
+        margin-bottom: 0;
+    }
+
+    .points{
+        display: flex;
+    }
+
+    .points p {
+        margin-bottom: 2rem;
+    }
+
+    .points div{
+        height: 80px;
+        border-left: 1px dashed grey ;
+        padding-left: 2rem;
+    }
+
+    .points div:nth-child(1){
+        border: none;
+    }
+
+    .changePassword{
+        width: 60%;
+        margin: auto;
+    }
+
+    .address-book-h{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .address-book-inner{
+        padding-bottom: 0px;
+    }
+
+    .statement-head{
+        font-size: 1.3rem;
+    }
+    
+    tbody tr th{
+        font-size: 1.1rem;
+    }
+    
+    tbody tr td{
+        font-size: 1.1rem;
+    }
+
+    .tier-inner-1{
+        display: flex;  
+        align-items: center; 
+    }
+
+    .tier-bottom{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media(min-width: 1024px ){
+    .dashboard{
+        display: flex;
+        align-items: center;
+    }
+
+    .dash-button-p{
+        max-height: 3rem;
+        width: 17%;        
+        font-size: 1.3rem;
+    }
+
+    .dash-name,
+    .dash-contact p{
+        margin-bottom: 0;
+    }
+
+    .dash-info{
+        align-items: center;
+    }
+
+    .points{
+        display: flex;
+    }
+
+    .points div{
+        height: 90px;
+        border-left: 1px dashed grey ;
+        padding-left: 2rem;
+    }
+
+    .points div:nth-child(1){
+        border: none;
+    }
+
+    .points p {
+        margin-bottom: 2rem;
+    }
+
+    .changePassword{
+        width: 50%;
+        margin: auto;
+    }
+
+    .address-book-h{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .address-book-inner{
+        padding-bottom: 0px;
+        color: #0a0abd;
+    }
+    .statement-head{
+        font-size: 1.1rem;
+    }
+    
+    tbody tr th{
+        font-size: 1.06rem;
+    }
+    
+    tbody tr td{
+        font-size: 1.06rem;
+    }
+
+    .statement{
+        display: flex;
+    }
+
+    .delivery{
+        padding-top: 0;
+    }
+
+    .tier-inner-1{
+        display: flex;   
+        align-items: center; 
+    }
+
+    .tier-bottom{
+        display: flex;
+        justify-content: space-between;
+    }
+}

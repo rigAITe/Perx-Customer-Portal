@@ -1,0 +1,83 @@
+.sub-section {
+  background-color: #f6f7f9;
+}
+
+.image-section {
+  background-color: white;
+}
+
+.ls-10 {
+  width: 110px;
+}
+
+.owl-carousel-lazy .home-slide:first-child,
+.owl-carousel-lazy .category-slide:first-child,
+.owl-carousel-lazy .owl-item:first-child .home-slide,
+.owl-carousel-lazy .owl-item:first-child .category-slide {
+  height: 500px;
+}
+
+.landing-image {
+  background-image: url("../assets//banner.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 400px;
+  width: 100%;
+}
+
+.medium-text {
+  font-size: 12px;
+}
+
+.carousel-button {
+  position: relative;
+  width: 40%;
+  margin-right: 30px;
+}
+
+.banner2-button {
+  position: relative;
+  width: 40%;
+}
+
+.toolbox-select {
+  width: 500px;
+}
+
+.toolbox-nav {
+  background-color: #f5f5f5;
+  padding-bottom: -6px;
+  padding: 8px;
+}
+
+.modal#addCartModal .modal-content {
+  border-top: 3px solid #0037b0;
+}
+
+.active-btn {
+  color: #003cad;
+  border-color: #003cad;
+  text-transform: capitalize;
+  background-color: #c4d9ff;
+}
+
+.horizontal-quantity {
+  height: 30px;
+}
+
+.product-single-qty .bootstrap-touchspin.input-group {
+  height: 40px;
+}
+
+.product-single-details .product-single-qty .horizontal-quantity {
+  height: 40px;
+}
+
+.nav.nav-tabs.show .nav-link,
+.nav.nav-tabs .nav-link.active {
+  color: black;
+}
+
+.nav-border-anim .nav-link:before {
+  background-color: #003cad;
+}

@@ -1,0 +1,167 @@
+// About
+.page-header {
+	padding: 10rem 0 9.7rem;
+
+	h1 {
+		color: $primary-color;
+		font-weight: 700;
+		font-size: 6rem;
+		line-height: 1;
+
+		span {
+			font-size: 1.8rem;
+			font-weight: 400;
+		}
+	}
+}
+
+.subtitle {
+	font-size: 1.6rem;
+	text-transform: uppercase;
+}
+
+.about-section {
+	padding-bottom: 6rem;
+
+	p {
+		line-height: 2;
+	}
+}
+
+.history-section {
+	padding: 0;
+
+	line-height: 24px;
+
+	.title {
+		margin-bottom: 2.5rem;
+	}
+}
+
+.history-row {
+	position: relative;
+	min-height: 515px;
+
+	.history-row-bg {
+		height: 360px;
+		width: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	.container {
+		position: relative;
+		z-index:2;
+	}
+}
+
+.history-header {
+	h5 {
+		line-height: 1;
+		margin: 0;
+
+		a {
+			display: block;
+			position: relative;
+			padding: 1.5rem 0;
+			color: #282d3b;
+			border-bottom: 1px solid #e4e4e4;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
+
+			&:not(.collapsed) {
+				color: $primary-color;
+				border-color: $primary-color;
+			}
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				display: inline-block;
+				right: 1rem;
+				top: 50%;
+				width: 10px;
+				height: 2px;
+				background-color: #7f8284;
+				margin-top: -1px;
+				transition: all .35s;
+			}
+
+			&.collapsed:after {
+				transform: rotate(-90deg);
+			}
+		}
+	}
+}
+
+.history-body {
+	font-size: 1.4rem;
+	line-height: 2;
+	padding: 2rem 0;
+
+	p {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.features-section {
+	padding: 5rem 0 1.5rem;
+
+	i {
+		min-width: 6rem;
+		line-height: 5.6rem;
+		margin-right: 1.5rem;
+		border-radius: 50%;
+		border: 2px solid $primary-color;
+		font-size: 2.8rem;
+		text-align: center;
+	}
+
+	.feature-box-content {
+		padding: 0 5rem 0 1.5rem;
+		font-size: 1.4rem;
+		line-height: 27px;
+		color: #4a505e;
+	}
+
+	h3 {
+		font-family: $second-font-family;
+		font-size: 1.5rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		margin-bottom: 2px;
+	}
+}
+
+@include mq(lg) {
+	.history-row {
+		.history-row-bg {
+			width: 50%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+
+	.features-section {
+		padding-top: 6rem;
+		padding-bottom: 2.5rem;
+	}
+}
+
+@include mq(xl) {
+	.history-row {
+		[class*='col-'] {
+			padding-left: 4.5rem;
+		}
+
+	}
+}

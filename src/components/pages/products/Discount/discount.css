@@ -1,0 +1,54 @@
+.muted-text {
+  font-size: 10px;
+}
+
+.widget-sub-title {
+  font-size: 12px;
+}
+
+.modal-logo {
+  height: 40%;
+  width: 40%;
+}
+
+.fa-chevron-right {
+  margin-top: 3px;
+}
+
+.fa-plus-circle {
+  color: #003cad;
+  font-size: 18px;
+}
+
+.explore {
+  font-size: 12px;
+  color: #003cad;
+}
+
+.main,
+.jumbotron-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.location-logo {
+  height: 15%;
+  width: 15%;
+}
+
+.fa-shopping-bag {
+  margin-top: 6px;
+}
+
+div .border {
+  border-top: 10px solid blue;
+}
+
+.alert-secondary{
+  margin-bottom: 5px;
+}
+
+.cap-table {
+    border-top: 4px solid #003CAD;
+    width: 100%;
+}

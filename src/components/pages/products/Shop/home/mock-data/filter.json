@@ -1,0 +1,55 @@
+{
+    "categories": [
+        "Accessories",
+        "Electronics",
+        "Fashion",
+        "Bag"
+    ],
+    "Size": [
+        "Small",
+        "Medium",
+        "Large",
+        "Extra Large"
+    ],
+    "Brands": [
+        "Adidas",
+        "Camel",
+        "Seiko",
+        "Samsung Galaxy",
+        "Sony"
+    ],
+    "Colors": [
+        {
+            "value": "#000",
+            "name": "Black"
+        },
+        {
+            "value": "#0188cc",
+            "name": "Blue"
+        },
+        {
+            "value": "#81d742",
+            "name": "Green"
+        },
+        {
+            "value": "#6085a5",
+            "name": "Indigo"
+        },
+        {
+            "value": "#ab6e6e",
+            "name": "Red"
+        },
+        {
+            "value": "#ddb373",
+            "name": "Brown"
+        },
+        {
+            "value": "#6b97bf",
+            "name": "Light-Blue"
+        },
+        {
+            "value": "#eded68",
+            "name": "Yellow"
+        }
+    ]
+}

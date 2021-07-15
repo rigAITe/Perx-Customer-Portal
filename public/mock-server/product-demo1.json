@@ -1,0 +1,741 @@
+[
+	{
+		"id": 1,
+		"name": "Fashion Bag",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/products/bag-1.jpg",
+			"assets/images/products/bag-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Bag"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"size": [
+			"Small",
+			"Medium",
+			"Extra Large"
+		],
+		"color": [
+			"#000",
+			"#0188cc",
+			"#81d742",
+			"#6085a5",
+			"#6085a5"
+		],
+		"date": "09/23/2019"
+	},
+	{
+		"id": 2,
+		"name": "Casual Cap",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/products/cap-1.jpg",
+			"assets/images/products/cap-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"size": [
+			"Small",
+			"Medium",
+			"Extra Large"
+		],
+		"color": [
+			"#000",
+			"#0188cc",
+			"#81d742",
+			"#6085a5",
+			"#6085a5"
+		],
+		"date": "09/24/2019"
+	},
+	{
+		"id": 3,
+		"name": "Glasses",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/products/glasses-1.jpg",
+			"assets/images/products/glasses-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Sunglasses"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"size": [
+			"Small",
+			"Medium",
+			"Extra Large"
+		],
+		"color": [
+			"#000",
+			"#0188cc",
+			"#81d742",
+			"#6085a5",
+			"#6085a5"
+		],
+		"date": "09/25/2019"
+	},
+	{
+		"id": 4,
+		"name": "Casual Bag",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/products/bag-3.jpg",
+			"assets/images/products/bag-4.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Bag",
+			"Accessories"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"size": [
+			"Small",
+			"Medium",
+			"Extra Large"
+		],
+		"color": [
+			"#000",
+			"#0188cc",
+			"#81d742",
+			"#6085a5",
+			"#6085a5"
+		],
+		"top": 10,
+		"date": "09/25/2019"
+	},
+	{
+		"id": 5,
+		"name": "Blue Backpack",
+		"price": 15.00,
+		"pictures": [
+			"assets/images/products/backpack.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Bag",
+			"Fashion"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "09/28/2019"
+	},
+	{
+		"id": 6,
+		"name": "Shoes",
+		"price": 18.00,
+		"pictures": [
+			"assets/images/products/shoes-1.jpg",
+			"assets/images/products/shoes-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Shoes"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "09/25/2019"
+	},
+	{
+		"id": 7,
+		"name": "Speaker",
+		"price": 20.00,
+		"pictures": [
+			"assets/images/products/speaker-1.jpg",
+			"assets/images/products/speaker-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Music"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "09/25/2019"
+	},
+	{
+		"id": 8,
+		"name": "Sports Shoes",
+		"price": 20.00,
+		"pictures": [
+			"assets/images/products/shoes-3.jpg",
+			"assets/images/products/shoes-4.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Shoes"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "09/30/2019"
+	},
+	{
+		"id": 9,
+		"name": "Mobile Speaker",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/products/speaker-3.jpg",
+			"assets/images/products/speaker-4.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Music",
+			"Electronics"
+		],
+		"discount": -27,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "09/25/2019"
+	},
+	{
+		"id": 10,
+		"name": "Sports Bag",
+		"price": 35.00,
+		"salePrice": 30.00,
+		"pictures": [
+			"assets/images/products/sports-bag.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Bag"
+		],
+		"discount": -14,
+		"sale": true,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "10/25/2019"
+	},
+	{
+		"id": 11,
+		"name": "Battery Chager",
+		"price": 35.00,
+		"salePrice": 30.00,
+		"pictures": [
+			"assets/images/products/charger.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Accessories",
+			"Electronics"
+		],
+		"discount": -14,
+		"format": 1,
+		"sale": true,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "09/25/2019"
+	},
+	{
+		"id": 12,
+		"name": "Sports Watch",
+		"price": 88.00,
+		"pictures": [
+			"assets/images/products/watch-1.jpg",
+			"assets/images/products/watch-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Accessories",
+			"Electronics"
+		],
+		"discount": -14,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "09/25/2019"
+	},
+	{
+		"id": 13,
+		"name": "Woman Shoes",
+		"price": 350.00,
+		"pictures": [
+			"assets/images/products/woman-shoes.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Accessories",
+			"Shoes"
+		],
+		"discount": -14,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"date": "12/25/2019"
+	},
+	{
+		"id": 14,
+		"name": "Casual Watch",
+		"price": 35.00,
+		"pictures": [
+			"assets/images/products/watch-3.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Accessories",
+			"Electronics"
+		],
+		"discount": -14,
+		"format": 1,
+		"rating": 5,
+		"reviews": 6,
+		"top": 10,
+		"size": [
+			"Small",
+			"Medium",
+			"Extra Large"
+		],
+		"color": [
+			"#000",
+			"#0188cc",
+			"#81d742",
+			"#6085a5",
+			"#6085a5"
+		],
+		"date": "11/25/2019"
+	},
+	{
+		"id": 15,
+		"name": "Silver Porto Headset",
+		"price": 181.00,
+		"salePrice": 101.00,
+		"pictures": [
+			"assets/images/demo/products/zoom/product-1-big.jpg",
+			"assets/images/demo/products/zoom/product-2-big.jpg",
+			"assets/images/demo/products/zoom/product-3-big.jpg",
+			"assets/images/demo/products/zoom/product-4-big.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Music",
+			"Sunglasses"
+		],
+		"discount": 27,
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"color": [
+			"#000",
+			"#0188cc",
+			"#81d742",
+			"#6085a5",
+			"#6085a5"
+		],
+		"brand": [
+			"Seiko",
+			"Camel",
+			"Adidas"
+		],
+		"featured": false,
+		"variants": [
+			{
+				"name": "color",
+				"type": [
+					{
+						"price": 88.00,
+						"pictures": [
+							"assets/images/demo/products/zoom/product-1-big.jpg"
+						],
+						"color": "#6085a5",
+						"stock": 16
+					},
+					{
+						"price": 90.00,
+						"pictures": [
+							"assets/images/demo/products/zoom/product-2-big.jpg"
+						],
+						"color": "#ab6e6e",
+						"stock": 16
+					},
+					{
+						"price": 99.00,
+						"pictures": [
+							"assets/images/demo/products/zoom/product-3-big.jpg"
+						],
+						"color": "#b19970",
+						"stock": 16
+					},
+					{
+						"price": 90.00,
+						"pictures": [
+							"assets/images/demo/products/zoom/product-4-big.jpg"
+						],
+						"color": "#000",
+						"stock": 16
+					}
+				]
+			},
+			{
+				"name": "size",
+				"type": [
+					{
+						"size": "S",
+						"pictures": [
+							"assets/images/demo/products/zoom/product-1-big.jpg"
+						],
+						"price": 88.00,
+						"stock": 16
+					},
+					{
+						"size": "M",
+						"pictures": [
+							"assets/images/demo/products/zoom/product-2-big.jpg"
+						],
+						"price": 90.00,
+						"stock": 16
+					},
+					{
+						"size": "L",
+						"pictures": [
+							"assets/images/demo/products/zoom/product-3-big.jpg"
+						],
+						"price": 99.00,
+						"stock": 16
+					},
+					{
+						"size": "XL",
+						"pictures": [
+							"assets/images/demo/products/zoom/product-4-big.jpg"
+						],
+						"price": 90.00,
+						"stock": 16
+					}
+				]
+			}
+		],
+		"reviewContents": [
+			{
+				"author": "John Doe",
+				"avatar": "assets/images/demo/avatar/avatar1.jpg",
+				"date": "Novemeber 15, 2019",
+				"rating": 4,
+				"comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			},
+			{
+				"author": "John Doe",
+				"avatar": "assets/images/demo/avatar/avatar2.jpg",
+				"date": "Novemeber 15, 2019",
+				"rating": 4,
+				"comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			},
+			{
+				"author": "John Doe",
+				"avatar": "assets/images/demo/avatar/avatar3.jpg",
+				"date": "Novemeber 15, 2019",
+				"rating": 4,
+				"comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			}
+		]
+	},
+	{
+		"id": 16,
+		"name": "Porto Fashion Shoes",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-10.jpg",
+			"assets/images/demo/products/product-10-2.jpg",
+			"assets/images/demo/products/product-10-3.jpg",
+			"assets/images/demo/products/product-10-4.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"featured": true,
+		"new": true
+	},
+	{
+		"id": 17,
+		"name": "Mobile Speaker",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-3.jpg",
+			"assets/images/demo/products/product-3-2.jpg",
+			"assets/images/demo/products/product-3-3.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Shoes"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"featured": true,
+		"new": true
+	},
+	{
+		"id": 18,
+		"name": "Porto Casual Bag",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-13.jpg",
+			"assets/images/demo/products/product-13-2.jpg",
+			"assets/images/demo/products/product-13-3.jpg",
+			"assets/images/demo/products/product-13-4.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"featured": true
+	},
+	{
+		"id": 19,
+		"name": "Fashion Sunglasses",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-7.jpg",
+			"assets/images/demo/products/product-7-2.jpg",
+			"assets/images/demo/products/product-7-3.jpg",
+			"assets/images/demo/products/product-7-4.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"featured": true
+	},
+	{
+		"id": 20,
+		"name": "Brown Shoes",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-8.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Shoes"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"featured": true
+	},
+	{
+		"id": 21,
+		"name": "Hat",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-1.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"featured": true
+	},
+	{
+		"id": 22,
+		"name": "Men Shoes",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-10-3.jpg",
+			"assets/images/demo/products/product-10-4.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"new": true
+	},
+	{
+		"id": 23,
+		"name": "Blue Cloths",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-6.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"new": true
+	},
+	{
+		"id": 24,
+		"name": "Blue Bag",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-9.jpg",
+			"assets/images/demo/products/product-9-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Electronics"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"new": true
+	},
+	{
+		"id": 25,
+		"name": "Yellow Bag",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-13.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"new": true
+	},
+	{
+		"id": 26,
+		"name": "Gray Jacket",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-14.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"new": true
+	},
+	{
+		"id": 27,
+		"name": "Blue jacket",
+		"price": 9.00,
+		"pictures": [
+			"assets/images/demo/products/product-2.jpg"
+		],
+		"shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+		"stock": 16,
+		"category": [
+			"Fashion"
+		],
+		"format": 1,
+		"rating": 4,
+		"reviews": 6,
+		"top": 10,
+		"new": true
+	}
+]

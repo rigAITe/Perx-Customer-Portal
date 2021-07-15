@@ -1,0 +1,699 @@
+// style for react component 
+
+html {
+    font-size: 10px;
+}
+
+.btn, button {
+    &:focus {
+        box-shadow: none;
+        outline: 0;
+    }
+}
+
+.ReactModal__Overlay {
+    z-index: 9999 !important;
+}
+
+.newsletter-portal .ReactModal__Overlay {
+    z-index: 10000;
+}
+
+.Toastify {
+    font-size: 14px;
+    .Toastify__toast-container {
+        width: 280px;
+        left: auto;
+        top: 1em;
+        z-index: 10000;
+    }
+
+    .Toastify__toast-body {
+        margin-top:15px;
+    }
+
+    .Toastify__progress-bar {
+        opacity: 0 !important;
+    }
+
+    .Toastify__close-button {
+        margin: 0;
+        margin-top: 15px;
+        padding-right: 1rem;
+    }
+
+    .Toastify__toast {
+        padding-left: 2rem; 
+        border-radius: 5px;
+    }
+    
+}
+
+.mmenu-active {
+    .mobile-menu-container {
+        z-index: 1050;
+        transform: translateX(0);
+    }
+
+    
+}
+
+.compare-dropdown .dropdown-menu {
+    z-index: 105;
+}
+
+.nav-link:focus {
+    outline: none;
+}
+
+// react modals 
+.custom-scrollbar {
+    &::-webkit-scrollbar {
+        height: 10px;
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ebebeb;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #fff;
+        border-radius: 10px;
+        margin: 8px;
+        width : 100%;
+    }
+}
+
+.quickview-modal-overlay,
+.newsletter-modal-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(68,70,69,0.65);
+    z-index: 9999;
+}
+
+.cart-modal-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1500;
+}
+
+.add-cart-modal.modal {
+    display: block;
+}
+
+#newsletter-popup-form {
+    .mfp-close {
+        color: #08c;
+    }
+}
+
+button.mfp-close {
+    color: #08c;
+}
+
+// modal close button
+.mfp-close {
+    color: #08c;
+    font-size: 2rem;
+    font-weight: 700;
+    opacity: .85;
+}
+
+.add-cart-box img {
+    height: auto;
+}
+
+// login modal
+#shipping-address-form {
+    .form-control {
+        height: 4.5rem;
+        padding: 1.2rem 4rem 1.2rem 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    .form-group {
+        max-width: 480px;
+    }
+}
+
+#login-popup-form { 
+    .modal-wrapper {
+        max-height: 540px;
+        overflow-y: auto;
+    }
+
+    .custom-control {
+        padding-left: 3rem;
+    }
+
+    .custom-control-label {
+        vertical-align: middle;
+    }
+
+    .btn-social-login {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.header-search .header-search-wrapper.show .form-control {
+    min-width: 202px;
+    background-clip: border-box;
+}
+
+.form-control {
+    background-clip: unset;
+}
+
+// For IE
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    select::-ms-expand { display: none }
+    select:focus::-ms-value { background: transparent; color: currentColor }
+}
+
+.share-links a {
+    font-size: .8rem;
+    color: #fff;
+    text-indent: -9999em;
+    text-align: center;
+    width: 2.2857em;
+    height: 2.2857em;
+    display: inline-block;
+    margin: 0.2857em 0.5714em 0.2857em 0;
+    position: relative;
+    text-decoration: none;
+    vertical-align: middle;
+    transition: .25s;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.share-links .share-facebook {
+    background: #3b5a9a;
+}
+
+.share-links a {
+    font-size: 13px;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    margin: 0.2857em 0.1em 0.2857em 0;
+}
+
+.share-links a:not(:hover) {
+    background: none;
+    color: #222529;
+    border: 2px solid #e7e7e7;
+}
+
+.share-links a:hover, .share-links a:focus {
+    opacity: 0.9;
+    color: #fff;
+}
+
+.product-sel.type-image {
+    background-size: contain;
+    width: 3rem;
+    height: 3rem;
+}
+
+.active .type-image {
+    border: 1px solid #0088cc;
+}
+
+.price-slider-wrapper .input-range {
+    height: .3rem;
+    .input-range__slider {
+        height: 1.1rem;
+        width: 1.1rem;
+        right: -.55rem;
+        left: auto;
+        top: -0.05em;
+        background: #08c;
+        border-color: #08c;
+    }
+.input-range__label {
+        display: none;
+    }
+    .input-range__track--active {
+        background: #08c;
+    }
+    .input-range__label--value,
+    .input-range__label-container {
+        color: transparent;
+    }
+}
+
+.cat-list li.active a,
+.sort-list li.active {
+    color: #08c;
+}
+
+.sort-list li {
+    cursor: pointer;
+}
+
+.cat-list .active a {
+    position: relative;
+    padding-left: 16px;
+    &::before {
+        position:  absolute;
+        left: 0;
+        color: #08c;
+        content: 'x';
+        top: 42%;
+        transform: translateY(-50%);
+    }
+}
+
+// sidebar
+.sidebar-toggle {
+    transition: .2s ease-in-out 0s;
+}
+
+.sidebar-opened .sidebar-toggle {
+    left: 280px;
+}
+
+.mmenu-active .sidebar-toggle {
+    display: none;
+}
+
+.quantity-input .bootstrap-touchspin.input-group {
+    height: 36px;
+    .form-control {
+        height: 36px;
+    }
+}
+
+.grid-sizer {
+    max-height: 0;
+    min-height: 0;
+}
+
+// cart menu
+.cart-dropdown .dropdown-cart-products {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        height: 10px;
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ebebeb;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #fff;
+        border-radius: 10px;
+        margin: 8px;
+        width : 100%;
+    }
+}
+
+.cart-dropdown div.dropdown-menu {
+    transition: none;
+}
+
+
+// Animations
+@keyframes arrowLeftRight {
+    0% {
+        transform: translateX(0)
+    }
+
+    50% {
+        transform: translateX(3px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%)
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(20%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+
+    60% {
+        opacity: 0;
+        transform: translateY(120%)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+}
+
+// Animation for lazyload
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+  
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+  
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+    }
+}
+  
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
+  
+@-webkit-keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1);
+    }
+}
+  
+@keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUpShorter{
+    from{
+        opacity:0;
+        transform:translate(0,50px)
+    }
+    to{
+        opacity:1;
+        transform:none
+    }
+}
+
+.fadeInUpShorter{
+    animation-name:fadeInUpShorter
+}
+
+@keyframes fadeInLeftShorter{
+    from{
+        opacity:0;
+        transform:translate(50px,0)
+    }
+    to{
+        opacity:1;
+        transform:none
+    }
+}
+
+.fadeInLeftShorter{
+    animation-name:fadeInLeftShorter
+}
+
+@keyframes fadeInRightShorter{
+    from{
+        opacity:0;
+        transform:translate(-50px,0)
+    }
+    to{
+        opacity:1;
+        transform:none
+    }
+}
+
+.fadeInRightShorter{
+    animation-name:fadeInRightShorter
+}
+
+@keyframes fadeInDownShorter{
+    from{
+        opacity:0;
+        transform:translate(0,-50px)
+    }
+    to{
+        opacity:1;
+        transform:none
+    }
+}
+
+.fadeInDownShorter{
+    animation-name:fadeInDownShorter
+}
+
+.loader {
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.loadersmall {
+    border: 5px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.owl-carousel .owl-nav .owl-prev, .owl-carousel .owl-nav .owl-next {
+    display: inline-block;
+}
+
+.error-header {
+    .page-top .breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-bottom: 0;
+        padding: .4rem 1rem .5rem;
+        border-radius: 0;
+        background-color: transparent;
+    }
+
+    .breadcrumb-nav {
+        margin-bottom: 8rem;
+        padding: 12px 0;
+        background-size: cover;
+        background-position: center;
+        
+         .container {
+            padding-top: 35px;
+            padding-bottom: 36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2.page-title {
+            margin-bottom: 0;
+            font: 400 28px "Open Sans", sans-serif;
+            color: white;
+            text-transform: none;
+            letter-spacing: -.05em;
+            line-height: 1.2;
+        }
+    }
+
+    .breadcrumb-item {
+        text-transform: uppercase;
+        font: 400 11.2px "Open Sans", sans-serif;
+
+        a {
+            color: white;
+        }
+
+        & + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+}
+
+.http-error {
+	padding: 50px 0;
+    margin-bottom: 5rem;
+
+    h2 {
+        font-size: 140px;
+	    font-weight: 700;
+	    line-height: 140px;
+	    color: #212529;
+    }
+
+    h4 {
+    	font-size: 2rem;
+    }
+
+    p {
+    	color: #777;
+	    line-height: 26px;
+	    margin: 0 0 20px;
+	    font-size: 1.4em;
+	    line-height: 36px;
+    }
+
+    ul.nav-item {
+    	margin: 0;
+	    padding: 0;
+	    display: block;
+	    position: relative;
+    }
+
+    ul.nav-link {
+        transition: background 0.1s;
+	    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+	    padding: 8px 0 8px 22px;
+	    display: block;
+	    color: #666;
+	    font-size: 0.9em;
+	    text-decoration: none;
+	    line-height: 20px;
+    }
+
+    ul.nav-list li, ul[class^="wsp-"] li {
+        margin: 0;
+        padding: 0;
+        display: block;
+        flex: 0 0 100%;
+        position: relative;
+    }
+    
+    ul.nav-list li a, ul[class^="wsp-"] li a {
+        transition: background 0.1s;
+        padding: 8px 0 8px 20px;
+        display: block;
+        color: #666;
+        font-size: 0.9em;
+        text-decoration: none;
+        line-height: 20px;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+
+        &::before {
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            content: "\f054";
+            display: inline-block;
+            position: absolute;
+            top: 9px;
+            left: 9px;
+            opacity: .7;
+            font-size: .45rem;
+        }
+        &:hover::before {
+            animation: arrowLeftRight .6s linear infinite;
+        }
+    }
+}
+
+// responsive
+@media screen and (max-width: 991px) {
+    .sidebar-shop.mobile-sidebar {
+        width: 280px;
+    }
+    .sticky-header, .sticky-sidebar, .sticky-wrapper {
+        position: static !important;
+    }
+}
+
+@media screen and ( max-width: 767px ) {
+    .quickview-modal-overlay > div > .row {
+        padding-bottom: 30px;
+    }
+    .feature-box {
+        padding: 1rem 2rem;
+    }
+    .header-search .header-search-wrapper.show .form-control {
+        min-width: 100px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .product-list {
+        p.product-description {
+            display: none;
+        }
+    }
+}
+
+@media screen and ( max-width: 374px ) {
+    .modal#addCartModal {
+        width: 324px;
+    }
+    .newsletter-popup h2 {
+        margin-top: 23px;
+    }
+}

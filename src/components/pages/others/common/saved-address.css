@@ -1,0 +1,37 @@
+.saved-address {
+    background-color: #E8F0FF;
+    padding: 5px 28px;
+    border: 1px solid #003CAD;
+
+}
+.saved-address p {
+    color: #003CAD;
+    margin-bottom: 0.4rem;
+}
+.saved-address2 {
+    background-color: #fff;
+    padding: 5px 28px;
+    border: 1px solid #DFDFDF;
+
+}
+.saved-address2 p {
+    color: #1D1D1D;
+    margin-bottom: 0.4rem;
+}
+
+.pagination-statement{
+    background: blue;
+    padding: 7px 12px;
+     margin-bottom: 0px; 
+     color: #fff;
+     font-weight: 600; 
+     font-size: 10px; 
+     cursor: pointer;
+}
+
+.page-number{
+    padding-left: 10px;
+    padding-right: 10px; 
+    font-weight: 700;
+    /* border: black 2px solid */
+}

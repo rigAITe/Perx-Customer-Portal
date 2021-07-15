@@ -1,0 +1,322 @@
+// Wishlist
+.wishlist-table-container {
+    border-top: 4px solid $primary-color;
+    padding: 30px 20px 10px 20px;
+    box-shadow: 0 2px 4px 0px rgba(0,0,0,0.05);
+
+    tr {
+        border-top: 1px solid #dee2e6;
+
+        td {
+            border-top: none;
+        }
+    }
+
+    .table-title {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-size: 1.3em;
+        font-weight: 400;
+        letter-spacing: -0.7px;
+        line-height: 1.42857;
+        text-transform: uppercase;
+    }
+
+    .btn {
+        display: -ms-flexbox;
+        display: inline-flex;
+        position: relative;
+        padding: .85rem 1rem;
+        height: 37px;
+        min-width: 41px;
+        font-weight: 400;
+        text-decoration: none;
+        text-align: center;
+        z-index: 2;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #353a40;
+        background-color: #353a40;
+        color: #fff;
+        transition: all .3s;
+        font-size: 1.3rem;
+        letter-spacing: -.01em;
+
+        &:hover {
+            border-color: $primary-color;
+            background-color: $primary-color;
+        }
+
+        span {
+            display: inline-block;
+            padding-top: 1px;
+            padding-right: .1rem;
+            padding-left: .4rem;
+            font-size: 1.2rem;
+            letter-spacing: .02rem;
+        }
+    }
+
+    .btn-add-cart {
+        &::before {
+            display: inline-block;
+            line-height: 1;
+            margin-top: 2px;
+            font-size: 1.9rem;
+            content: '\e87f';
+            font-family: 'porto';
+            margin-right: 3px;
+        }
+    }
+
+    .product-name {
+        width: 29%;
+    }
+
+    .product-unit-price {
+        width: 18.14%;
+    }
+
+    .product-stock-status {
+        width: 19%;
+    }
+}
+
+.remove-from-wishlist {
+    display: flex;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #474747;
+    font-size: 1.1rem;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.table.table-wishlist {
+    thead tr {
+        border-top: none;
+    }
+    thead th {
+        padding: .75rem 1.5rem;
+        border: none;
+        font-weight: 600;
+        font-size: 1.4rem;
+        white-space: nowrap;
+
+        &.product-remove {
+            width: 40px;
+        }
+
+        &.product-thumbnail {
+            width: 80px;
+        }
+    }
+
+    .product-title a:hover {
+        text-decoration: underline;
+    }
+
+    td {
+        vertical-align: middle;
+        padding: 1.5rem;
+    }
+
+    .product-remove {
+        font-size: 3rem;
+        font-weight: 800;
+    }
+
+    .product-thumbnail{
+        figure {
+            flex: 0 0 80px;
+            max-width: 80px;
+        }
+        img {
+            max-width: 80px;
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .price-box {
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .old-price {
+        margin-right: 2px;
+        font-size: 11px;
+    }
+
+    .product-title, 
+    .product-price,
+    .product-stock-status {
+        font-size: 14px;
+    }
+
+    .btn-quickview,
+    .btn-download {
+        padding: .85rem 1.5rem;
+        margin-left: 1rem;
+        line-height: 34px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .product-action {
+        white-space: nowrap;
+    }
+}
+
+.wishlist-title,
+.cart-title {
+    margin-bottom: 5rem;
+    margin-top: 6rem;
+
+    h2 {
+        display: inline-block;
+        padding: 5px;
+        font-family: Open Sans,sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+
+.box-content {
+    .table-wishlist,
+    .table-cart {
+        margin-bottom: 15px;
+        font-size: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        margin-bottom: 1em;
+
+        .wishlist-empty {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    }
+
+    .btn-go-shop {
+        padding: 16px 0;
+        margin-top: 2rem;
+        border: none;
+        text-transform: uppercase;
+        text-align: center;
+        min-width: 200px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -.015em;
+        background-color: #353a40;
+        color: #fff;
+        
+        &:hover {
+            background-color: $primary-color;
+            color: #fff;
+        }
+    }
+}
+
+i.cart-empty,
+i.wishlist-empty {
+    font-size: 100px;
+    color: #d3d3d4;
+}
+
+//responsive
+@include mq(lg,max) {
+    .table.table-wishlist {
+        thead th {
+            padding: .75rem 1rem;
+        }
+        td {
+            padding: 1rem;
+        }
+    }
+}
+
+@include mq(md, max) {
+    .table.table-wishlist {
+        thead th {
+            padding: .75rem .7rem;
+        }
+
+        td {
+            padding: 1rem .7rem;
+        }
+    } 
+
+    .wishlist-table-container {
+        .btn {
+            &::before {
+                margin-left: .3rem;
+            }
+    
+            span {
+                display: none;
+            }
+    
+            i {
+                margin-left: 3px;
+            }
+    
+            &.btn-quickview {
+                padding: .85rem 1rem;
+            }
+        } 
+    }
+}
+
+@include mq(sm, max) {
+    .table.table-order thead {
+        display: none;
+    }
+
+    .table.table-order {
+        td {
+            display: block;
+            border-top: none;
+            text-align: center;
+        }
+
+        .product-thumbnail img {
+            display: inline;
+        }
+
+        tbody tr {
+            position: relative;
+            display: block;
+            padding: 10px 0;
+
+            &:not(:first-child) {
+                border-top: 1px solid #ddd;
+            }
+        }
+
+        .product-remove {
+            position: absolute;
+            top: 12px;
+            right: 0;
+        }
+    }
+
+    .wishlist-table-container {
+        .product-stock-status {
+            width: auto;
+        }
+    }
+
+    .td.product-thumbnail > div {
+        margin: 0 auto;
+        width: 90px;
+    }
+}

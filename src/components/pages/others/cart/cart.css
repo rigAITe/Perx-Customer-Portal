@@ -1,0 +1,59 @@
+.product-action .btn-update-cart,
+.product-action .btn-clear-cart {
+  background-color: #0037b0;
+  border-color: #0037b0;
+}
+
+.wishlist-table-container .btn {
+  border: 1px solid lightgray;
+  background-color: white;
+  color: gray;
+}
+
+.wishlist-table-container .cart-checkout-btn {
+  background-color: #0037b0;
+  border-color: #0037b0;
+  color: white;
+}
+
+.wishlist-table-container .btn:hover {
+  background-color: #0037b0;
+  border-color: #0037b0;
+  color: white;
+}
+
+.remove-cart td {
+  width: 150px;
+}
+
+.remove-cart .striped-row {
+  background-color: #f8f8f8;
+}
+
+.cart-modal-content {
+  width: 1050px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .cart-modal-content {
+    width: 700px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .cart-modal-content {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .cart-modal-content {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .cart-modal-content {
+    width: 400px;
+  }
+}

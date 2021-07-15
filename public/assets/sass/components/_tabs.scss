@@ -1,0 +1,74 @@
+// Tabs
+.nav.nav-tabs {
+	margin: 0;
+	border: 0;
+	border-bottom: 2px solid #eaeaea;
+  
+	.nav-link {
+	  padding: 0 0 1.2rem;
+	  margin-top: 2rem;
+	  margin-right: 3rem;
+	  border: 0;
+	  color: #777;
+	  font: 700 1.4rem / 1 $font-family;
+	  letter-spacing: -.01rem;
+	  text-transform: uppercase;
+	  transition: color .35s;
+	  cursor: pointer;
+  
+	  &:hover {
+		color: $primary-color;
+		transition: color .35s;
+	  }
+	}
+  
+	&.show .nav-link,
+	.nav-link.active {
+	  color: $primary-color;
+	  background-color: transparent;
+	}
+  }
+  
+  .nav-border-anim {
+	  .nav-link {
+		  position: relative;
+		  border-bottom: none;
+  
+		  &:before {
+			  content: '';
+			  display: block;
+			  position: absolute;
+			  left:0;
+			  bottom: -2px;
+			  width: 100%;
+			  height: 2px;
+			  background-color: $primary-color;
+			  transform-origin: right center;
+			  transform: scale(0, 1);
+			  transition: transform .3s ease;
+  
+			  .form-tab & {
+				  height: .2rem;
+			  }
+		  }
+	  }
+	  
+	  .nav-link {
+		  &.active {
+		  z-index: 1;
+		  
+		  &:before {
+			transform-origin: left center;
+			transform: scale(1, 1);
+		  }
+		}
+	  }
+  }
+  
+  @media screen and (max-width: 480px) {
+	.nav.nav-tabs .nav-link {
+	  margin-top: 1rem;
+	  margin-right: .5rem;
+	  padding: 0 1.5rem 1rem;
+	}
+  }

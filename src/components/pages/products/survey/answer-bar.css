@@ -1,0 +1,15 @@
+.answer-card {
+    padding: 0px 20px;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+.active-card {
+    background-color: #003CAD1A;
+    border: 1px solid #003CAD;
+}
+
+.answer-bar-emoji{
+    height: 8%;
+    width: 8%;
+    margin-right: 2px;
+}

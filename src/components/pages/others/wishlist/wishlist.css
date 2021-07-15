@@ -1,0 +1,8 @@
+.product-action .btn-add-cart, .product-action .btn-quickview{
+    background-color: #0037b0;
+    border-color: #0037b0;
+}
+
+.wishlist-table-container {
+    border-top: 4px solid #0037b0;
+}

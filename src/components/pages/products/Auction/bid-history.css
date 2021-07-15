@@ -1,0 +1,18 @@
+.cap-table {
+    border-top: 4px solid #003CAD;
+}
+.cap-table span {
+    color: black;
+    font-weight: bold;
+}
+.imageStyle {
+    width: 30px;
+    height: 30px;
+}
+.textStyle1 {
+    color: #003CAD;
+    text-decoration: underline;
+}
+.increase-width {
+    width: 23rem;
+}

@@ -1,0 +1,326 @@
+.experience-jumbotron {
+  background-image: url("./assets/banner.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 350px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.flightss{
+  overflow: scroll;
+}
+
+.travel-banner-text {
+  font-size: larger;
+}
+
+.fligt-control-btn {
+  color: #fff !important;
+}
+
+.product-default figure .event-image,
+.product-default figure .event-image {
+  height: 120%;
+}
+
+.flight-card {
+  width: 1000px;
+  margin-top: 3.3rem;
+  margin-bottom: 3rem;
+  padding: 2.2rem 2.7rem;
+  border: 1px solid #f4f7fd;
+  background-color: #f4f7fd;
+  min-height: 360px;
+  /* max */
+}
+
+.all-flight-card {
+  width: 1000px;
+  margin-top: 3.3rem;
+  margin-bottom: 3rem;
+  padding: 2.2rem 2.7rem;
+  border: 1px solid #FCFCFC;
+  background-color: #FCFCFC;
+  min-height: 200px;
+}
+
+.right-flight-card {
+  border: 1px solid #F8F8F8;
+  background-color: #F8F8F8;
+}
+
+#active-flight-btn {
+  color: white;
+  border-color: #003cad;
+  text-transform: capitalize;
+  background-color: #003cad;
+}
+
+.filter-input{
+  height: 43px;
+  /* width: 30px; */
+}
+
+.filter-btn{
+  padding: 2px;
+  margin: 0.2px;
+  height: 20px;
+  width: 45px;
+}
+
+.medium-text {
+  font-size: 12px;
+}
+
+.small-text {
+  font-size: 10px;
+}
+
+.flight-btn {
+  background-color: #C9C9C9;
+  color: #767676;
+  border-color: #C9C9C9;
+}
+
+.main-gap{
+  margin-top: 220px;
+}
+
+.fligt-control-btn{
+  margin-bottom: 10px;
+  height: 42px;
+  border-color: #003cad;
+  color: #003cad;
+}
+
+.btn-outline-primary{
+  border-color: #003cad;
+  color: #003cad;
+}
+
+.fligt-control-negative-btn{
+  margin-bottom: 10px;
+  height: 42px;
+}
+
+.change-flight-btn{
+  margin-bottom: 10px;
+}
+
+.carrier-logo{
+  height: 80px;
+  width: 80px;
+}
+
+.right-arrow{
+  width: 15%;
+}
+
+.add-dashed-border{
+  border-bottom: dashed 1px #767676;
+  padding: 12px;
+}
+
+
+
+.trip-type-content{
+  /* display: flex; */
+  justify-content: space-between;
+}
+
+.trip-type{
+  display: flex;
+  justify-content: space-around;
+}
+
+.trip-type > div:nth-of-type(n + 2){
+  margin-left: 1rem;
+}
+
+.trip-filter-head{
+  margin-bottom: 0;
+  padding-top: 2rem;
+}
+
+.trip-filter{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+/* .travel-content{ */
+  /* width: 95%;
+  margin: auto;
+} */
+
+.trip-type-content input{
+  margin-bottom: 0;
+  /* margin-top: 1rem; */
+}
+
+.trip-type-content .d-flex{
+  margin-top: 1.3rem;
+}
+
+.trip-type > div{
+  margin-top: 2rem;
+}
+
+.filter-btn{
+  display: none;
+}
+
+.addFlight{
+  width: 100%;
+  margin-top: 2rem;
+/* margin-right: 10px; */
+}
+
+.addButton{
+  color: #003cad !important;
+}
+
+.addButton:hover{
+  color: #fff !important;
+}
+
+.search{
+  text-align: right;
+}
+
+.addBorder{
+  /* border-top: solid 1px red; */
+  padding-top: 2rem;
+}
+
+.trip-content{
+  background-color: #f4f7fd;;
+  padding: 2rem;
+}
+
+.travel{
+  background-image: url("./assets/banner.svg");
+  background-repeat: no-repeat;
+  background-position: cover;
+  /* height: 350px;
+  width: 100%; */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+}
+.travel-head h5{
+  color: #fff;
+}
+
+.flight-list,
+.travel-inner{
+  width: 95%;
+  margin: auto;
+}
+
+.travel-page{
+  background-color: white;
+}
+
+.multiButton{
+  margin-top: 20px;
+}
+
+@media( max-width: 767px ){
+  .multiButton > *,
+  .multiButton div{
+    width: 100%;
+  }
+
+  
+}
+
+
+@media(min-width: 768px ) and ( max-width: 1023px ){
+  .trip-type-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .trip-filter .d-flex > div:nth-child(n + 2){
+    margin-left: .5rem;
+  }
+
+  .addFlight{
+    width: 25%;
+  }
+
+  .multiButton{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .flight-list{
+  width: 85%;
+  margin: auto;
+}
+}
+
+
+
+@media(min-width: 1024px ){
+  .trip-type-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .addFlight{
+    width: 100%;
+    margin-right: 10px;
+  } 
+
+  .search{
+    /* text-align: right; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .multiButton{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .trip-filter > div{
+    margin-left: 1rem;
+  }
+
+  .filter-btn{
+    display: block;
+  }
+
+  .flight-list,
+  .travel-inner{
+    width: 80%;
+    margin: auto;
+  }
+
+}
+
+
+
+
+
+
+@media (max-width: 1000px) {
+  .flight-card {
+    width: 800px;
+  }
+}
+
+@media (max-width: 800px) {
+  .flight-card {
+    width: 600px;
+  }
+}
+
+@media (max-width: 700px) {
+  .flight-card {
+    width: 400px;
+  }
+}

@@ -1,0 +1,51 @@
+.header {
+    background-color: #003CAD;
+}
+.header p {
+    color: white;
+}
+.dropdown-expanded ul a {
+    color: white;
+}
+.header-top a {
+    color: white;
+}
+.header-icon i {
+    color: white;
+}
+.header-text {
+    color: #FFBA00;
+}
+.header-text:hover {
+    color: #FFBA00;
+}
+.header .dropdown-toggle i {
+    color: white;
+}
+.header .dropdown-toggle {
+    color: white;
+}
+.header .header-contact a {
+    color: white;
+}
+.sticky-header {
+    background-color: #003CAD;
+}
+.menu>li>a {
+    color: white;
+}
+.header-contact h6 {
+    color: rgba(255, 255, 255, 0.664);
+}
+.rubies-span {
+    text-transform: none;
+    color: #FFBA00;
+    font-size: 13px;
+}
+.badge-circle {
+    background-color: #FFBA00;
+}
+
+.header-active{
+    color: #FFBA00 !important;
+}

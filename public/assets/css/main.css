@@ -1,0 +1,160 @@
+.form-control {
+    height: 4rem;
+    /* padding: 1rem 2rem !important; */
+}
+
+ .select{
+    padding: 2px 15px !important;
+    height: 42px !important;
+}
+
+.discount-location div{
+    background-color: lightgrey;
+    margin-bottom: 5px;
+    font-size: 10px;
+    color: black;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discount-location p{
+    /* background-color: lightgrey; */
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.discount-explore{
+    color: rgb(6, 13, 114);
+}
+
+.disc-button{
+    width: 100%;
+}
+label {
+    margin-top: 2rem;
+    color: #151515;
+}
+.login-container .heading {
+    margin-bottom: 1rem;
+}
+.icon-menu {
+    color: white;
+}
+.btn-primary {
+    background-color: #003CAD;
+    border-color: #003CAD;
+}
+.forget-pass {
+    color: #003CAD;
+}
+.forgotpassword h4 {
+    text-align: left;
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.width-100 {
+    width: 100%;
+}
+.ruby-tag {
+    color: #003CAD !important;
+}
+.black-text {
+    color: black;
+}
+.bold {
+    font-weight: bold;
+}
+.less-margin p:first-child {
+    margin-bottom: 0.3rem
+}
+.width-50 {
+    width: 40%;
+}
+.w-55 {
+    width: 50%;
+}
+.width-60 {
+    width: 60%;
+}
+.mt-25 {
+    margin-top: 4.2rem;
+}
+.opacity {
+    opacity: 0.5;
+}
+.blue-anchor {
+    color: #003CAD !important;
+}
+.card-body a {
+    text-decoration: none;
+}
+.underline {
+    text-decoration: underline;
+}
+.btn-primary {
+    text-transform: capitalize;
+}
+.table th {
+    color: #777777;
+    font-weight: 700;
+}
+.btn {
+    padding: 0.8rem 2.2rem;
+    font-weight: 500;
+}
+.added-margin-rem {
+    margin-top: 0.6rem;
+}
+.auction-winner {
+    font-size: 2.3rem;
+}
+.width-23rem {
+    width: 23rem;
+}
+.pickup-btn {
+    color: #003CAD;
+    border-color: #003CAD;
+    text-transform: capitalize;
+    background-color: #C4D9FF;
+}
+.pickup-btn :active {
+    background-color: #C4D9FF;
+}
+.btn {
+    text-transform: capitalize;
+}
+a {
+    color: #003CAD;
+}
+a:hover {
+    color: rgba(0, 61, 173, 0.842);
+}
+.black-btn {
+    background-color: #1D1D1D;
+    border: none;
+}
+.black-btn:hover {
+    background-color: rgba(29, 29, 29, 0.726);
+}
+.grey-bg {
+    background-color: #F8F8F8;
+}
+.sweepstake p {
+    margin-bottom: 0.3rem;
+}
+.cap-table {
+    border-top: 4px solid #003CAD;
+}
+.sweepstake-table .badge {
+    color: white;
+    padding: 1.0em 0.9em;
+}
+.no-margin {
+    margin: 0px;
+}
