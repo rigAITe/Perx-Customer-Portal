@@ -35,8 +35,8 @@ axios.interceptors.request.use(
         request.url = `http://localhost:3001${request.url}`;
       } else {
         const origin = window.location.origin;
-        const path = "demo_perx2_season/portals/customer";
-        request.url = `${origin}/${path}${request.url}`;
+        // const path = "demo_perx2_season/portals/customer";
+        request.url = `${origin}${request.url}`;
       }
     }
 
