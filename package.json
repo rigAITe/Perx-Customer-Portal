@@ -2,9 +2,6 @@
   "name": "react-porto",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://192.168.1.27/porto-react/demo-1/",
-  "homepage1": "http://perxclm2.com/demo_perx2_season/portals/customer",
-  "proxy": "http://demoprogram.perxclm2.com/public/portal/sigma-prime/",
   "basename": "/",
   "dependencies": {
     "@babel/core": "7.1.0",
