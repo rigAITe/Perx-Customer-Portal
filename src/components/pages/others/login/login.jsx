@@ -46,9 +46,9 @@ function Login() {
           window.location.href = `${origin}/pages/dashboard/board`;
         } else {
           const origin = window.location.origin;
-          const path = "demo_perx2_season/portals/customer";
+          // const path = "demo_perx2_season/portals/customer";
           console.log("production login");
-          window.location.href = `${origin}/${path}/pages/dashboard/board`;
+          window.location.href = `${origin}/pages/dashboard/board`;
         }
       }
 
