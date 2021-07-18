@@ -36,7 +36,7 @@ export function Root() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={<span></span>}>
-        <BrowserRouter basename={"/"}>
+        <BrowserRouter basename="/">
           <ScrollContext>
             <Routes />
           </ScrollContext>

@@ -42,7 +42,6 @@ function Account() {
           <div className="card cap-table">
             <form style={{marginBottom: 0}}>
               <div className="card-bodie">
-                <h5>Edit Account Information </h5>
                 <div className="row">
                   <div className="col-md-4">
                     <div className="form-group ">

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_url = `https://demoprog4.perxclm2.com/public/portal/sigma-prime/`;
+const base_url = `http://demoprog4.perxclm2.com/public/portal/sigma-prime/`;
 
 // const base_url = `http://demoprogram.perxclm2.com/public/portal/sigma-prime/`;
 const access_token = localStorage.getItem("access_token");
@@ -60,7 +60,7 @@ axios.interceptors.request.use(
   }
 );
 
-const guest = ["/pages/login", "/forgot-password", "/reset-password"];
+const guest = ["/pages/login", "/forgot-password", "/reset-password", "/"];
 
 axios.interceptors.response.use(
   function(response) {

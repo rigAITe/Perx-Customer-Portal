@@ -55,6 +55,10 @@ function Header(props) {
     getUserBalance();
   }, []);
 
+  const balance =() => {
+
+  }
+
   useEffect(() => {
     if (userBalanceState.data && userBalanceState.data !== null) {
       if (
@@ -175,11 +179,11 @@ function Header(props) {
                   <li>
                     <Link
                       className={`${
-                        isURLActive(`${process.env.PUBLIC_URL}/`) === true
+                        isURLActive(`${process.env.PUBLIC_URL}/pages/auction`) === true
                           ? "header-active"
                           : ""
                       }`}
-                      to={`${process.env.PUBLIC_URL}/`}
+                      to={`${process.env.PUBLIC_URL}/pages/auction`}
                     >
                       Auction
                     </Link>

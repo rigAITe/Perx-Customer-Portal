@@ -61,29 +61,6 @@ function SearchForm( props ) {
             <form action="#" method="get">
                 <div className="header-search-wrapper">
                     <input type="search" className="form-control" name="q" id="q" placeholder={ placeholder } required />
-                    {
-                        isCat ?
-                            <div className="select-custom">
-                                <select id="cat" name="cat">
-                                    <option value="">All Categories</option>
-                                    <option value="4">Fashion</option>
-                                    <option value="12">- Women</option>
-                                    <option value="13">- Men</option>
-                                    <option value="66">- Jewellery</option>
-                                    <option value="67">- Kids Fashion</option>
-                                    <option value="5">Electronics</option>
-                                    <option value="21">- Smart TVs</option>
-                                    <option value="22">- Cameras</option>
-                                    <option value="63">- Games</option>
-                                    <option value="7">Garden</option>
-                                    <option value="11">Motors</option>
-                                    <option value="31">- Cars </option>
-                                    <option value="34">- Boats</option>
-                                </select>
-                            </div>
-                            : ""
-
-                    }
                     <button className={ iconClass + " btn " + btnAClass } type="submit"></button>
                 </div>
             </form>

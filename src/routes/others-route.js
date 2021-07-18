@@ -59,6 +59,7 @@ import AllFlights from '../components/pages/products/Entertainment/Travel/AllFli
 import FlightDetails from '../components/pages/products/Entertainment/Travel/AllFlights/flightDetails';
 import AuctionBidHistory from '../components/pages/products/Auction/auction-bid-history';
 import ListDiscountProducts from '../components/pages/products/Discount/ListDiscountProducts';
+import HomePage from '../components/home/index';
 
 export default class ProductsRoute extends React.Component {
     render() {
@@ -336,6 +337,11 @@ export default class ProductsRoute extends React.Component {
                 exact
                 path={`${process.env.PUBLIC_URL}/pages/travel/all-flights/flight-details`}
                 component={FlightDetails}
+              />
+              <Route
+                exact
+                path={`${process.env.PUBLIC_URL}/pages/auction`}
+                component={HomePage}
               />
             </Layout>
           </Switch>

@@ -306,7 +306,7 @@ td{
     .points div{
         height: 80px;
         border-left: 1px dashed grey ;
-        padding-left: 2rem;
+        padding-left: 1rem;
     }
 
     .points div:nth-child(1){
@@ -379,7 +379,7 @@ td{
     .points div{
         height: 90px;
         border-left: 1px dashed grey ;
-        padding-left: 2rem;
+        padding-left: 1rem;
     }
 
     .points div:nth-child(1){

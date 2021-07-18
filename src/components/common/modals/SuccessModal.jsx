@@ -18,12 +18,12 @@ function SuccessModal(props) {
 
   const openModal = (e) => {
     e.preventDefault();
-    setOpen(true);
+    setOpen(open);
   };
 
   const closeModal = () => {
-    closeSuccessModal();
-    // setOpen(false);
+    // closeSuccessModal();
+    setOpen(!open);
   };
 
   return (

@@ -86,11 +86,11 @@ function ShowAllBeneficiariesPage() {
         beneficiaries.data.status === 1 &&
         beneficiaries.data.success === true
       ) {
-        console.log(beneficiaries.data);
+        console.log('BENEFICIARY DATA ', beneficiaries.data);
         beneficiaries.data.data.forEach((beneficiary) => {
           allBeneficiaries.current.push({
             value: beneficiary.membership_number,
-            label: `${beneficiary.first_name} ${beneficiary.last_name}`,
+            label: `${beneficiary.first_name} ${ beneficiary.last_name == null ? '' : beneficiary.last_name}`,
             id: `${beneficiary.id}`,
           });
         });

@@ -12,6 +12,7 @@ import swal from "sweetalert";
 import toastr from "toastr";
 import Select from "react-select";
 import "./css/transfer-points.css";
+import { nanoid }from 'nanoid'
 
 function TransferPoints() {
   const [showTransferSummary, setShowTransferSummary] = useState(false);
@@ -66,7 +67,7 @@ function TransferPoints() {
         beneficiaries.data.data.forEach((beneficiary) => {
           allBeneficiaries.current.push({
             value: beneficiary.membership_number,
-            label: `${beneficiary.first_name} ${beneficiary.last_name}`,
+            label: `${beneficiary.first_name} ${beneficiary.last_name == null ? '' : beneficiary.last_name}`,
           });
         });
       }
@@ -90,7 +91,7 @@ function TransferPoints() {
         setShowBeneficiaryDataPage(true);
 
         beneficiaryData.current = {
-          name: `${verifyCardState.data.data.first_name} ${verifyCardState.data.data.last_name}`,
+          name: `${verifyCardState.data.data.first_name} ${verifyCardState.data.data.last_name == null ? '' : verifyCardState.data.data.last_name}`,
         };
 
         toastr.success("Membership Id Validated!", "Success", {
@@ -146,7 +147,7 @@ function TransferPoints() {
       return;
     }
 
-    setShowTransferSummary(true);
+    setShowTransferSummary(!showTransferSummary);
     setTransferSummaryData({
       amount,
       name: beneficiaryData.current.name,
@@ -170,6 +171,10 @@ function TransferPoints() {
     beneficiaryData.current.save_beneficiary = save_beneficiary;
   };
 
+  console.log('current beneficiaries ', (allBeneficiaries.current) )
+
+  let id = nanoid()
+
   return (
     <div>
       {loading ? <Loading /> : ""}
@@ -187,6 +192,7 @@ function TransferPoints() {
                 name="beneficiary_card_number"
                 defaultValue="Select"
                 options={allBeneficiaries.current}
+                // key={id}
               />
             </div>
             <h6 class="mt-3 heading-border border-0">OR</h6>
@@ -300,7 +306,7 @@ function TransferPoints() {
         </div>
       </form>
       {showTransferSummary === true ? (
-        <TransferSummary data={transferSummaryData} />
+        <TransferSummary data={transferSummaryData} showTransferSummary={showTransferSummary} setShowTransferSummary={setShowTransferSummary}/>
       ) : (
         ""
       )}

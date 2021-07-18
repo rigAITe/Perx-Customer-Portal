@@ -181,7 +181,7 @@ export default function HomePage() {
           </section>
         </div>
       </div>
-      <NewsletterModal />
+      {/* <NewsletterModal /> */}
     </>
   );
 }
