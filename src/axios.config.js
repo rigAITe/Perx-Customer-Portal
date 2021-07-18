@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_url = `http://demoprog4.perxclm2.com/public/portal/sigma-prime/`;
+const base_url = `https://demoprog4.perxclm2.com/public/portal/sigma-prime/`;
 
 // const base_url = `http://demoprogram.perxclm2.com/public/portal/sigma-prime/`;
 const access_token = localStorage.getItem("access_token");
