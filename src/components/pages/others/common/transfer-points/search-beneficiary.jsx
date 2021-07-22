@@ -13,18 +13,21 @@ import toastr from "toastr";
 import Select from "react-select";
 import "./css/transfer-points.css";
 import { nanoid }from 'nanoid'
+import axios from 'axios'
 
 function TransferPoints() {
+
   const [showTransferSummary, setShowTransferSummary] = useState(false);
   const [transferSummaryData, setTransferSummaryData] = useState(false);
   const [showBeneficiaryDataPage, setShowBeneficiaryDataPage] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [ benefit, setBenefit ] = useState([])
+
 
   const {
     verifyCardNumber,
     verifyCardState,
     getBeneficiaryList,
-    beneficiaries,
     hideBeneficiaryDataPage,
     setInputs,
     inputs,
@@ -40,39 +43,11 @@ function TransferPoints() {
       success: "alert-success",
       warning: "alert-warning",
     },
-  };
-
-  const allBeneficiaries = useRef([]);
+  };  
 
   useEffect(() => {
     getBeneficiaryList();
-  }, []);
-
-  useEffect(() => {
-    if (beneficiaries.data !== null) {
-      if (
-        beneficiaries.data.status === 0 &&
-        beneficiaries.data.success === false
-      ) {
-        toastr.error("Failed to fetch user beneficiaries!", "error", {
-          iconClass: "toast-error",
-        });
-        console.log("beneficiaries", beneficiaries.data.data);
-      }
-
-      if (
-        beneficiaries.data.status === 1 &&
-        beneficiaries.data.success === true
-      ) {
-        beneficiaries.data.data.forEach((beneficiary) => {
-          allBeneficiaries.current.push({
-            value: beneficiary.membership_number,
-            label: `${beneficiary.first_name} ${beneficiary.last_name == null ? '' : beneficiary.last_name}`,
-          });
-        });
-      }
-    }
-  }, [beneficiaries]);
+  }, []); 
 
   useEffect(() => {
     if (hideBeneficiaryDataPage) {
@@ -81,6 +56,7 @@ function TransferPoints() {
   }, [hideBeneficiaryDataPage]);
 
   const beneficiaryData = useRef({});
+
 
   useEffect(() => {
     if (verifyCardState.data !== null) {
@@ -126,15 +102,6 @@ function TransferPoints() {
     }
   }, [verifyCardState]);
 
-  const handleSearchInput = (event) => {
-    const card_number = event.value;
-    setInputs((inputs) => ({
-      ...inputs,
-      card_number,
-    }));
-    verifyCardNumber(card_number);
-  };
-
   const proceedToTransfer = () => {
     const amount = document.getElementById("amount").value;
     if (amount.trim().length === 0) {
@@ -152,7 +119,7 @@ function TransferPoints() {
       amount,
       name: beneficiaryData.current.name,
       membership_id: inputs.card_number,
-      save_beneficiary: (beneficiaryData.current.save_beneficiary) ? 1 : 0,
+      save_beneficiary: (beneficiaryData.current.save_beneficiary == 1) ? 1 : 0,
     });
   };
 
@@ -167,22 +134,43 @@ function TransferPoints() {
   const handleChange = (event) => {
     event.persist();
     setChecked(event.target.checked);
+
     const save_beneficiary = event.target.checked === true ? 1 : 0;
     beneficiaryData.current.save_beneficiary = save_beneficiary;
   };
 
-  console.log('current beneficiaries ', (allBeneficiaries.current) )
+  const handleSearchInput = (event) => {
+    const card_number = event.value;
+    setInputs((inputs) => ({
+      ...inputs,
+      card_number,
+    }));
+    verifyCardNumber(card_number);
+  };
 
-  let id = nanoid()
+  useEffect(() => {
+    axios.get(`user/beneficiaries`)
+      .then( res => setBenefit(res.data.data))
+  }, [])
+
+  const newArr = benefit.map( res => {
+    let name = `${res.first_name} ${res.last_name == null ? '' : res.last_name}`
+    const data  = {
+      value: res.membership_number,
+      label : name
+    }
+    return data
+  })
+
 
   return (
     <div>
-      {loading ? <Loading /> : ""}
+      {/* {loading ? <Loading /> : ""} */}
       <form action="#">
         <div className="row">
           <div className="col-md-12">
             <div className="form-group">
-              <label htmlFor="acc-email">Select Beneficiary</label>
+              <label htmlFor="acc-email">Select Beneficiary </label>
               <Select
                 onChange={handleSearchInput}
                 className="basic-single"
@@ -191,11 +179,10 @@ function TransferPoints() {
                 isSearchable="true"
                 name="beneficiary_card_number"
                 defaultValue="Select"
-                options={allBeneficiaries.current}
-                // key={id}
+                options={newArr}
               />
             </div>
-            <h6 class="mt-3 heading-border border-0">OR</h6>
+            <h6 className="mt-3 heading-border border-0">OR</h6>
 
             <div className="row align-items-center justify-content-between">
               <div className="col-md-8">
@@ -306,7 +293,7 @@ function TransferPoints() {
         </div>
       </form>
       {showTransferSummary === true ? (
-        <TransferSummary data={transferSummaryData} showTransferSummary={showTransferSummary} setShowTransferSummary={setShowTransferSummary}/>
+        <TransferSummary data={transferSummaryData}  setShowTransferSummary={setShowTransferSummary} setShowBeneficiaryDataPage={setShowBeneficiaryDataPage}/>
       ) : (
         ""
       )}

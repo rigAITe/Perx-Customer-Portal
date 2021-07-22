@@ -5,8 +5,13 @@ import Loading from "../../../../features/Loader/Loading";
 import swal from "sweetalert";
 import { LoaderContext } from "../../../../../context/Loading";
 import toastr from "toastr";
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function ShowAllBeneficiariesPage() {
+
+  const [ data, setData ] = useState([])
   const {
     getBeneficiaryList,
     beneficiaries,
@@ -26,34 +31,34 @@ function ShowAllBeneficiariesPage() {
     },
   };
 
-  useEffect(() => {
-    if (state.data !== null) {
-      if (state.data.status === 1 && state.data.success === true) {
-        swal({
-          title: "Successful!",
-          text: state.data.message,
-          icon: "success",
-          button: "Ok",
-        });
-        getBeneficiaryList();
-      }
+  // useEffect(() => {
+  //   if (state.data !== null) {
+  //     if (state.data.status === 1 && state.data.success === true) {
+  //       swal({
+  //         title: "Successful!",
+  //         text: state.data.message,
+  //         icon: "success",
+  //         button: "Ok",
+  //       });
+  //       getBeneficiaryList();
+  //     }
 
-      if (state.data.status === 0 && state.data.success === false) {
-        swal({
-          title: "Oops!",
-          text: state.data.message,
-          icon: "error",
-          button: "Ok",
-        });
-      }
-    }
-  }, [state]);
+  //     if (state.data.status === 0 && state.data.success === false) {
+  //       swal({
+  //         title: "Oops!",
+  //         text: state.data.message,
+  //         icon: "error",
+  //         button: "Ok",
+  //       });
+  //     }
+  //   }
+  // }, [state]);
 
-  useEffect(() => {
-    getBeneficiaryList();
-  }, []);
+  // useEffect(() => {
+  //   getBeneficiaryList();
+  // }, []);
 
-  const allBeneficiaries = useRef([]);
+  // const allBeneficiaries = useRef([]);
 
   const handleDelete = (id) => {
     swal({
@@ -67,56 +72,80 @@ function ShowAllBeneficiariesPage() {
     }).then((result) => {
       if (result === true) {
         removeBeneficiary(id);
+        console.log('ID OF RECEIVER ', id)
+        const newBeneficiary = data.filter(add => add.id !== id)
+        setData(newBeneficiary)
+        toastr.success("Beneficiary Removed !", "Success", {
+          iconClass: "toast-success",
+        });
       }
     });
   };
 
-  useEffect(() => {
-    if (beneficiaries.data !== null) {
-      if (
-        beneficiaries.data.status === 0 &&
-        beneficiaries.data.success === false
-      ) {
-        toastr.error("Failed to fetch user beneficiaries!", "error", {
-          iconClass: "toast-error",
-        });
-      }
+  // useEffect(() => {
+  //   if (beneficiaries.data !== null) {
+  //     if (
+  //       beneficiaries.data.status === 0 &&
+  //       beneficiaries.data.success === false
+  //     ) {
+  //       toastr.error("Failed to fetch user beneficiaries!", "error", {
+  //         iconClass: "toast-error",
+  //       });
+  //     }
 
-      if (
-        beneficiaries.data.status === 1 &&
-        beneficiaries.data.success === true
-      ) {
-        console.log('BENEFICIARY DATA ', beneficiaries.data);
-        beneficiaries.data.data.forEach((beneficiary) => {
-          allBeneficiaries.current.push({
-            value: beneficiary.membership_number,
-            label: `${beneficiary.first_name} ${ beneficiary.last_name == null ? '' : beneficiary.last_name}`,
-            id: `${beneficiary.id}`,
-          });
-        });
-      }
-    }
-  }, []);
+  //     if (
+  //       beneficiaries.data.status === 1 &&
+  //       beneficiaries.data.success === true
+  //     ) {
+  //       console.log('BENEFICIARY DATA ', beneficiaries.data);
+  //       beneficiaries.data.data.forEach((beneficiary) => {
+  //         allBeneficiaries.current.push({
+  //           value: beneficiary.membership_number,
+  //           label: `${beneficiary.first_name} ${ beneficiary.last_name == null ? '' : beneficiary.last_name}`,
+  //           id: `${beneficiary.id}`,
+  //         });
+  //       });
+  //     }
+  //   }
+  // }, [allBeneficiaries]);
+
+  const fetchData = () => {
+    axios.get(`user/beneficiaries`)
+    .then( res => setData(res.data.data ))
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <div>
-      {loading ? <Loading /> : ""}
-      <div className="col-sm-12">
-        {allBeneficiaries.current.map((data) => {
-          return (
-            <p className="mb-1 p-4 beneficiary-list">
-              {data.label} - {data.value}
-              <i
-                style={{ cursor: "pointer" }}
-                onClick={() => handleDelete(data.id)}
-                class="float-right fas fa-trash"
-              ></i>{" "}
-            </p>
-          );
-        })}
-      </div>
+      {/* {loading ? <Loading /> : ""} */}
+      { data.length === 0 ? 
+      (
+        <div style={{textAlign: 'center'}}>No beneficiaries found</div>
+      ) 
+        : 
+      (
+        <div className="col-sm-12">
+          {data.map((item) => {
+            console.log('Beneficiary Data ', data)
+            return (
+              <p className="mb-1 p-4 beneficiary-list">
+                {item.first_name} {item.last_name} - {item.membership_number}
+                <i
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleDelete(item.id)}
+                  class="float-right fas fa-trash"
+                ></i>{" "}
+              </p>
+            );
+          })}
+        </div>
+      )}
     </div>
+    
   );
 }
 
-export default React.memo(ShowAllBeneficiariesPage);
+export default (ShowAllBeneficiariesPage);

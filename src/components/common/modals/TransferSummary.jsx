@@ -70,6 +70,7 @@ function TransferSummary(props) {
     };
 
     makeTransfer(data);
+    props.setShowBeneficiaryDataPage(false)
     closeModal();
   };
 

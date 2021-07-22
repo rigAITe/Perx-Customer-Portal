@@ -27,8 +27,6 @@ function TierStatus() {
   let member_upgrade_value = data.member_upgrade_value
   let firstTwoLetters = tiername.slice(0, 2).toUpperCase()
 
-  
-  // let percentage = ( upgrade / member_upgrade_value  ) * 100
   let Lpercentage = (member_upgrade_value / upgrade ) * 100
 
   const percentageF = () => {

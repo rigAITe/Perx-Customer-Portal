@@ -13,6 +13,7 @@ export function TransferPointsContextController({ children }) {
   const [beneficiaries, setBeneficiaries] = useState(intialState);
   const [inputs, setInputs] = useState({});
   const [hideBeneficiaryDataPage, setHideBeneficiaryDataPage] = useState(false);
+  
 
   const getBeneficiaryList = () => {
     toggleLoading(true);
@@ -23,6 +24,7 @@ export function TransferPointsContextController({ children }) {
         setBeneficiaries({
           data: res.data,
         });
+
       })
       .catch((err) => {
         toggleLoading(false);
@@ -81,8 +83,15 @@ export function TransferPointsContextController({ children }) {
 
   const removeBeneficiary = (id) => {
     toggleLoading(true);
+
+    console.log('REMOVE ', id)
+
+    const data = {
+      beneficiary_id: parseInt(id)
+    }
+
     axios
-      .post(`user/remove-beneficiary/${id}`)
+      .post(`user/remove/beneficiary`, data)
       .then((res) => {
         console.log(res);
         toggleLoading(false);

@@ -55,9 +55,9 @@ function Header(props) {
     getUserBalance();
   }, []);
 
-  const balance =() => {
+  let nf = new Intl.NumberFormat()
+  let balance = nf.format(userData.current_balance)
 
-  }
 
   useEffect(() => {
     if (userBalanceState.data && userBalanceState.data !== null) {
@@ -357,7 +357,7 @@ function Header(props) {
                   <h6>
                     HI {userData.first_name}
                     <Link to="#" className="font1">
-                      {userData.current_balance}{" "}
+                      {balance}{" "}
                       <span className="rubies-span">{userData.point_name}</span>
                     </Link>
                   </h6>

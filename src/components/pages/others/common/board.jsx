@@ -25,13 +25,17 @@ function Board() {
 
   }, [])
 
-  // let upgrade = tier.upgrade_value
-  // let member_upgrade_value = tier.member_upgrade_value
   let firstTwoLetters = tierName.slice(0, 2).toUpperCase()
   let name1 = firstname.slice(0, 1).toUpperCase()
   let name2 = lastname == null ? 'X' : lastname.slice(0, 1).toUpperCase()
 
-  console.log('name1 ', name1)
+  let nf = new Intl.NumberFormat()
+
+  let currentBalance = nf.format(parseFloat(tier.current_bal))
+  let totalCredit = nf.format(parseFloat(tier.total_credit_points))
+  let totalDebit = nf.format(parseFloat(tier.total_debit_points))
+
+  currentBalance == "NaN" ? console.log('its NaN') : console.log('ITS A Number')
 
   return (
     <div className="col-12 col-lg-16 col-md-12 board">
@@ -65,15 +69,15 @@ function Board() {
                 <div className="card-body points">
                   <div>
                     <p>Total Current Balance</p>
-                    <strong>{tier.current_bal}</strong>
+                    <strong>{currentBalance == 'NaN' ? '' : currentBalance }</strong>
                   </div>
                   <div>
                     <p>Total Credit Points</p>
-                    <strong>{tier.total_credit_points}</strong>
+                    <strong>{totalCredit == 'NaN' ? '' :  totalCredit}</strong>
                   </div>
                   <div>
                     <p>Total Used Points</p>
-                    <strong>{tier.total_debit_points}</strong>
+                    <strong>{totalDebit == 'NaN' ? '' : totalDebit}</strong>
                   </div>
                 </div>
               </div>

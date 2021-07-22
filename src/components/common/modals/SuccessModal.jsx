@@ -24,6 +24,7 @@ function SuccessModal(props) {
   const closeModal = () => {
     // closeSuccessModal();
     setOpen(!open);
+    window.location.reload()
   };
 
   return (
