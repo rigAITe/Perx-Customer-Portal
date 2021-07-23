@@ -27,12 +27,18 @@
   font-size: 12px;
 }
 
+.btn-lg{
+  font-size: 1.3rem !important;
+}
+
 
 @media(min-width: 376px ) and ( max-width: 425px ){
   .resizeModal{
     width: 75% !important;
     /* margin: auto !important; */
   }
+
+  
 }
 
 @media( max-width: 375px ){

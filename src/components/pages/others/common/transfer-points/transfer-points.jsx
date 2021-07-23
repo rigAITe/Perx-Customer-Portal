@@ -52,23 +52,23 @@ function TransferPoints() {
           <div style={{padding: '20px'}}>
             <h4>Transfer Points</h4>
             <div className="row my-5">
-              <div className="col-md-6">
+              <div className="col-md-6 col-sm-6 col-6 ">
                 <button
                   type="submit"
                   id="transfer"
                   onClick={() => switchTabs("transfer")}
-                  className={`w-100 btn-lg btn btn-outline-secondary active-beneficiary-menu`}
+                  className={`w-100 btn-lg btn btn-outline-secondary active-beneficiary-menu t-head`}
                 >
                   Transfer to Beneficiary
                 </button>
               </div>
 
-              <div className="col-md-6">
+              <div className="col-md-6 col-sm-6 col-6 ">
                 <button
                   type="submit"
                   id="all_beneficiaries"
                   onClick={() => switchTabs("all_beneficiaries")}
-                  className="w-100 btn-lg btn btn-outline-secondary"
+                  className="w-100 btn-lg btn btn-outline-secondary t-head"
                 >
                   All Beneficiaries
                 </button>
