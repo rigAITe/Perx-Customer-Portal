@@ -12,7 +12,7 @@ function SuccessModal(props) {
   const customStyles = {
     content: {
       width: "40%",
-      margin: "0 auto",
+      // margin: "auto",
     },
   };
 
@@ -41,7 +41,7 @@ function SuccessModal(props) {
         isOpen={open}
         // onRequestClose={close}
         contentLabel="addCartModal"
-        className="add-cart-modal modal"
+        className="add-cart-modal modal resizeModal"
         id="addCartModal"
         shouldFocusAfterRender={false}
         portalClassName="ReactModalPortal add-to-cart-portal"

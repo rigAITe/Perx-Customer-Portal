@@ -196,11 +196,11 @@ function TransferPoints() {
                 />
               </div>
 
-              <div className=" col-4 " style={{marginTop: '30px', paddingLeft: '10px', textAlign: 'end',}}>   
+              <div style={{marginTop: '30px', paddingLeft: '10px', textAlign: 'end',}}>   
                 <button
                   onClick={() => verifyCardNumber(inputs.card_number)}
                   type="button"
-                  className="btn-lg  btn btn-primary"
+                  className="btn-lg w-500 btn btn-primary"
                 >
                   Validate Id
                 </button>

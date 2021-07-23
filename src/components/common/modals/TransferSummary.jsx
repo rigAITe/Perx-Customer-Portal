@@ -33,7 +33,7 @@ function TransferSummary(props) {
   const customStyles = {
     content: {
       width: "40%",
-      margin: "0 auto",
+      // margin: "0 auto",
     },
   };
 
@@ -99,7 +99,7 @@ function TransferSummary(props) {
       <Modal
         isOpen={open}
         contentLabel="addCartModal"
-        className="add-cart-modal modal"
+        className="add-cart-modal modal resizeModal"
         id="addCartModal"
         shouldFocusAfterRender={false}
         portalClassName="ReactModalPortal add-to-cart-portal"
