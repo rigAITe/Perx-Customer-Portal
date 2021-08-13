@@ -74,7 +74,7 @@ function HomePage( props ) {
               displayCount={displayCount}
             />
             <div className="product-wrapper mt-2">
-              <AuctionProducts
+              <AuctionProducts 
                 curPage={curPage}
                 type={layout}
                 productType="flex-grid"
@@ -82,7 +82,7 @@ function HomePage( props ) {
                 displayCount={displayCount}
               />
             </div>
-            <Pagination
+            {/* <Pagination
               count={productCount}
               curPage={onChangeCurPage}
               productType="flex-grid"
@@ -90,7 +90,7 @@ function HomePage( props ) {
               changeDisplay={onChangeDisplayCount}
               displayCount={displayCount}
               filters={props.filter}
-            />
+            /> */}
           </div>
           <div className="mb-5"></div>
         </div>

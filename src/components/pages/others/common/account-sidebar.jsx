@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // "order", "address", "billing", "profile",
 
-const boards = [ "board", "account", "tier_status",  "address_book", "statement", "order_history", "auction_history", 'change_password',  'transfer_points', ];
+const boards = [ "board", "account", "tier_status",  "address_book", "statement", "order_history", "auction_history", "auction_bid_history" , 'change_password',  'transfer_points', ];
 
 function AccountSidebar( props ) {
     useEffect( () => {
@@ -59,6 +59,12 @@ function AccountSidebar( props ) {
               <Link
                 to={`${process.env.PUBLIC_URL}/pages/dashboard/auction_history`} >
                 Auction Bid History
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={`${process.env.PUBLIC_URL}/pages/dashboard/auction_bid_history`} >
+                Auction History
               </Link>
             </li>
             <li>

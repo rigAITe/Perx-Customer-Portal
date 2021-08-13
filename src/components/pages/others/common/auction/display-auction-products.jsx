@@ -14,7 +14,6 @@ import { findIndex } from "../../../../../utils/index.js";
 
 function DisplayProducts(props) {
   const { product } = props;
-  console.log(product);
   //   let isInWishlist = props.product
   //     ? findIndex(props.wishlist, props.product.id)
   //       ? true
@@ -32,6 +31,10 @@ function DisplayProducts(props) {
     <span className="badge badge-danger">Expired!</span>
   );
 
+  // let products = product[0]
+
+  // console.log('Ref Number ', products)
+
   return (
     <div className="col-6 col-md-3 p-0" key={"flex-grid" + "1 increasing"}>
       <div className="skel-pro skel-pro-grid"></div>{" "}
@@ -39,6 +42,7 @@ function DisplayProducts(props) {
         <figure>
           <a
             href={`/products/auction/${product.auction_ref_no}`}
+            // href={`auction/single/${product.auction_ref_no}`}
             class="docs-creator"
           >
             <span>
@@ -63,6 +67,7 @@ function DisplayProducts(props) {
             class="btn-quickview docs-creator"
             title="Quick View"
             href={`/products/auction/${product.auction_ref_no}`}
+            // href={`auction/single/${product.auction_ref_no}`}
           >
             Quick View
           </a>
@@ -83,6 +88,7 @@ function DisplayProducts(props) {
             <h2 class="product-title">
               <a
                 href={`/products/auction/${product.auction_ref_no}`}
+                // href={`auction/single/${product.auction_ref_no}`}
                 class="docs-creator"
               >
                 {product.auction_name}

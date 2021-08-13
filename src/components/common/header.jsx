@@ -418,7 +418,7 @@ function Header(props) {
         { isURLActive(`${process.env.PUBLIC_URL}/pages/airtime_bills`) === true 
           ? <SubMenu.AirtimeBill_subMenu/> : ""
         }
-        { isURLActive(`${process.env.PUBLIC_URL}/`) === true
+        { isURLActive(`${process.env.PUBLIC_URL}/pages/auction`) || isURLActive(`${process.env.PUBLIC_URL}/pages/auction/:id`) === true
           ? <SubMenu.Auction_subMenu/> : ""
         }
         { isURLActive(`${process.env.PUBLIC_URL}/pages/discount`) === true

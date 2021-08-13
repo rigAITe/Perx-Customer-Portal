@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import imagesLoaded from "imagesloaded";
-
 import Breadcrumb from "../../../common/breadcrumb";
 import SurveyContainer from "./survey-container";
 import { findProductById } from "../../../../utils";

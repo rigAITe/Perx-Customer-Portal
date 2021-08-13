@@ -25,6 +25,8 @@ function SuccessfulBidModal(props) {
     setOpen(false);
   };
 
+  console.log('PROP ', props.refNumber)
+
   return (
     <>
       <Link
@@ -45,7 +47,7 @@ function SuccessfulBidModal(props) {
         portalClassName="ReactModalPortal add-to-cart-portal"
         overlayClassName="cart-modal-overlay"
         style={customStyles}
-        // onAfterOpen={afterOpenModal}
+      // onAfterOpen={afterOpenModal}
       >
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
@@ -70,15 +72,23 @@ function SuccessfulBidModal(props) {
               <hr className="divider" />
 
               <div className="text-center">
-                <p>Your bid</p>
+                {props.amount == 0 ? '' :
+                <><p>Your bid</p>
                 <p className="black-text bold">
                   {props.amount} <span className="ruby-tag">Rubies</span>
-                </p>
+                </p></> }
               </div>
               <div className="d-flex justify-content-center">
-                <Link 
-                  to={`${process.env.PUBLIC_URL}/products/bid-history`}
+                <Link
+                  className="blue-anchor"
+                  to={{
+                    pathname: `${process.env.PUBLIC_URL}/pages/bid_history/${props.refNumber}`,
+                    state: { refNumber: props.refNumber }
+                  }}
                 >
+                  {/* <Link 
+                  to={`${process.env.PUBLIC_URL}/pages/bid_history`}
+                > */}
                   <button onClick={closeModal} className=" btn btn-primary">
                     Go to Bid History
                   </button>

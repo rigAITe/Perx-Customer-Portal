@@ -28,8 +28,8 @@ function Statement(props) {
   let endDate = JSON.stringify(events)
   endDate = endDate.slice(1,11)
 
-  console.log('DATE ', startDate)
-  console.log('DATE ', endDate)
+  // console.log('DATE ', startDate)
+  // console.log('DATE ', endDate)
 
   const getData = (pageNumber = 1) => {
     const url = `user/statement?page=${pageNumber}`
@@ -38,10 +38,12 @@ function Statement(props) {
   }
 
   const dateSearch = (pageNumber = 1) => {
+    
     const data = {
       start_date: startDate,
       end_date: endDate
     }
+
     const url = `user/statement?page=${pageNumber}`
     axios.post(url, data)
       .then(res => setNewData(res.data.data))

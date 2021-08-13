@@ -14,9 +14,7 @@ import swal from "sweetalert";
 import SuccessfulBidModal from "../../../../../common/modals/SuccessfulBidModal.jsx";
 
 function SingleDetail(props) {
-  const { placeBid, placeBidState, setInputs, inputs } = useContext(
-    AuctionContext
-  );
+  const { placeBid, placeBidState, setInputs, inputs } = useContext(AuctionContext);
   const { loading } = useContext(LoaderContext);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { wishlist, product, isSticky = false, auction, auction_bid } = props;
@@ -66,8 +64,7 @@ function SingleDetail(props) {
   const callPlaceBid = () => {
     const data = {
       auction_ref_no: product.auction_ref_no,
-      member_no: product.member_no,
-      amount: inputs.amount,
+      points: inputs.amount,
     };
 
     placeBid(data);
@@ -83,15 +80,17 @@ function SingleDetail(props) {
         title: "Oops!",
         text: isStateHandled(placeBidState).message,
         icon: "error",
-        button: "Ok",
+        button: "Okkk",
       });
       return;
     }
 
     if (isStateHandled(placeBidState) && isStateHandled(placeBidState).status) {
+      // console.log('IT IS SUCCESFUL')
       setShowSuccessModal(true);
     }
   }, [placeBidState.data]);
+
 
   const handleInputChange = (event) => {
     event.persist();
@@ -117,8 +116,8 @@ function SingleDetail(props) {
               <p>Current bid</p>
               <p className="black-text bold">
                 {product.current_bid
-                  ? formatNumber(props.product.current_bid)
-                  : ""}{" "}
+                  ? formatNumber(product.current_bid)
+                  : "0 "}{" "}
                 <span className="ruby-tag">Rubies</span>
               </p>
             </div>
@@ -129,10 +128,17 @@ function SingleDetail(props) {
               <p className="black-text bold">
                 {product.bid_count} bids{" "}
                 <span className="ruby-tag">
+                {/* <Link 
+              to={{
+                pathname: `/hello/${this.state.nextPage}`, 
+                query:{thing: 'asdf', another1: 'stuff'}
+              }}> */}
                   <Link
                     className="blue-anchor"
-                    to={`${process.env.PUBLIC_URL}/pages/bid_history`}
-                    href="#"
+                    to={{
+                      pathname: `${process.env.PUBLIC_URL}/pages/bid_history`,
+                      state: {currentBid: product.current_bid}
+                    }}
                   >
                     View bids
                   </Link>
@@ -160,8 +166,8 @@ function SingleDetail(props) {
                   value={inputs.amount}
                 />
               </div>
-              <p style={{ fontSize: 11 }}>Enter {product.current_bid
-                  ? formatNumber(props.product.current_bid)
+              <p style={{ fontSize: 11 }}>Enter {product.min_bid
+                  ? formatNumber(product.min_bid)
                   : ""}{" "} or more</p>
             </div>
             <div className="col-md-6 col-lg-6 col-12">
@@ -179,7 +185,7 @@ function SingleDetail(props) {
           </div>
         </div>
 
-        <hr className="divider mb-1" />
+        {/* <hr className="divider mb-1" /> */}
 
         {/* <div className="product-single-share">
           <div className="social-icons mr-2">
@@ -226,6 +232,8 @@ function SingleDetail(props) {
           amount={inputs.amount}
           messageTitle="Bid Submitted Successully"
           messageBody="Your bid has been submitted"
+          // currentBid={product.current_bid}
+          refNumber={product.auction_ref_no}
         />
       ) : (
         ""

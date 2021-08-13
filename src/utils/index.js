@@ -3,12 +3,13 @@
  * @return { bool }
  */
 export const isStateHandled = function(state) {
+  // console.log('STATE DATA ', state.data)
   if (state.data !== null) {
-    if (state.data.status === 1 && state.data.success === true) {
+    if (state.data.status === 1 ) {
       return { status: true, message: state.data.message };
     }
 
-    if (state.data.status === 0 && state.data.success === false) {
+    if (state.data.status === 0 ) {
       return { status: false, message: state.data.message };
     }
   }

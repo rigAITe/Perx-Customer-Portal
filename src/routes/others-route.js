@@ -60,6 +60,8 @@ import FlightDetails from '../components/pages/products/Entertainment/Travel/All
 import AuctionBidHistory from '../components/pages/products/Auction/auction-bid-history';
 import ListDiscountProducts from '../components/pages/products/Discount/ListDiscountProducts';
 import HomePage from '../components/home/index';
+import AuctionHome from '../components/home/auctionHome';
+import AuctionBidhistory from '../components/pages/products/Auction/auctionBidHistory';
 
 export default class ProductsRoute extends React.Component {
     render() {
@@ -78,7 +80,7 @@ export default class ProductsRoute extends React.Component {
               />
               <Route
                 exact
-                path={`${process.env.PUBLIC_URL}/pages/bid_history`}
+                path={`${process.env.PUBLIC_URL}/pages/bid_history/:id`}
                 component={BidHistory}
               />
               <Route
@@ -183,6 +185,12 @@ export default class ProductsRoute extends React.Component {
                 component={AuctionBidHistory}
               />
               {/*  */}
+              {/* auction_bid_history */}
+              <Route
+                exact
+                path={`${process.env.PUBLIC_URL}/pages/dashboard/auction_bid_history`}
+                component={AuctionBidhistory}
+              />
               <Route
                 exact
                 path={`${process.env.PUBLIC_URL}/pages/blog`}
@@ -342,6 +350,11 @@ export default class ProductsRoute extends React.Component {
                 exact
                 path={`${process.env.PUBLIC_URL}/pages/auction`}
                 component={HomePage}
+              />
+              <Route
+                exact
+                path={`${process.env.PUBLIC_URL}/pages/auctions/:id`}
+                component={AuctionHome}
               />
             </Layout>
           </Switch>

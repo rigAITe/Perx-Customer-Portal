@@ -7,9 +7,10 @@ export const AuctionContext = React.createContext();
 export function AuctionContextController({ children }) {
   const { toggleLoading } = useContext(LoaderContext);
   let intialState = { data: null };
-  const [state, setState] = useState(intialState);
+  const [state, setState] = useState([]);
   const [singleAuctionState, setSingleAuction] = useState(intialState);
-  const [listAuctionState, setListAuctionState] = useState(intialState);
+  const [listAuctionState, setListAuctionState] = useState([]);
+  const [listHomeAuctionState, setListHomeAuctionState] = useState([]);
   const [placeBidState, setPlaceBid] = useState(intialState);
   const [bidHistoryState, setBidHistory] = useState(intialState);
   const [singleClaimState, setSingleClaimState] = useState(intialState);
@@ -17,19 +18,25 @@ export function AuctionContextController({ children }) {
   const [inputs, setInputs] = useState({});
   const [orderReceipt, setOrderReceipt] = useState({});
   const [deliveryState, setDeliveryState] = useState(intialState);
+  const [auctionCurrentPage, setAuctionCurrentPage] = useState(0)
+  const [auctionPerPage, setAuctionPerPage] = useState(0)
+  const [auctionTotalPage, setAuctionTotalPage] = useState(0)
+  const [singleBid, setSingleBidHistory ] = useState(intialState)
+  const [currentBid, setCurrentBid] = useState()
+  // setCurrentBid
 
   const getAuctionCategories = () => {
     toggleLoading(true);
     axios
-      .get(`auction/sigma-prime/categories`)
+      .get(`auction/categories`)
       .then((res) => {
         toggleLoading(false);
-        setState({
-          data: res.data,
-        });
+        setState(
+          res.data.data
+        );
       })
       .catch((err) => {
-        console.log('Error in AUCTION',err.response)
+        // console.log('Error in AUCTION',err.response)
         toggleLoading(false);
         setState({
           data: err.response,
@@ -40,12 +47,11 @@ export function AuctionContextController({ children }) {
   const listAuctions = () => {
     toggleLoading(true);
     axios
-      .get(`auction/sigma-prime/list_auctions`)
+      .get(`auction/list`)
       .then((res) => {
+        console.log('LIST AUCTION ', res.data.data)
         toggleLoading(false);
-        setListAuctionState({
-          data: res.data,
-        });
+        setListAuctionState( res.data.data );
       })
       .catch((err) => {
         console.log(err.response);
@@ -56,10 +62,31 @@ export function AuctionContextController({ children }) {
       });
   };
 
+  const listHomeAuctions = (category, pagenumber = 1) => {
+    toggleLoading(true);
+    axios
+      .get(`auction/list/${category}?page=${pagenumber}`)
+      .then((res) => {
+        console.log('PURSE AUCTION ', res.data.data)
+        toggleLoading(false);
+        setListHomeAuctionState( res.data.data.data );
+        setAuctionCurrentPage(res.data.data.current_page)
+        setAuctionPerPage(res.data.data.per_page)
+        setAuctionTotalPage(res.data.data.total)
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toggleLoading(false);
+        setListHomeAuctionState({
+          data: err.response,
+        });
+      });
+  };
+
   const getSingleAuction = (auction_ref_no) => {
     toggleLoading(true);
     axios
-      .get(`auction/sigma-prime/get_auction/${auction_ref_no}`)
+      .get(`auction/single/${auction_ref_no}`)
       .then((res) => {
         toggleLoading(false);
         setSingleAuction({
@@ -77,12 +104,15 @@ export function AuctionContextController({ children }) {
 
   const placeBid = (data) => {
     toggleLoading(true);
+    // console.log('BID DATA ', data)
     axios
-      .post(`auction/sigma-prime/place/bid`, {
+      .post(`auction/place/bid`, {
         ...data,
       })
-      .then((res) => {
-        console.log(res);
+      .then(res => {
+        console.log('BID response ', res.data)
+        // setSuccess(true)
+        // showSuccessModal(true)
         toggleLoading(false);
         setPlaceBid({
           data: res.data,
@@ -91,18 +121,17 @@ export function AuctionContextController({ children }) {
       .catch((err) => {
         console.log(err.response);
         toggleLoading(false);
+        console.log('BID Failed')
         setPlaceBid({
           data: err.response.data,
         });
       });
   };
   
-  const bidHistory = (data) => {
+  const bidHistory = ( pagenumber = 1) => {
     toggleLoading(true);
     axios
-      .post(`auction/sigma-prime/member/history`, {
-        ...data,
-      })
+      .get(`auction/member/history?page=${pagenumber}`)
       .then((res) => {
         toggleLoading(false);
         setBidHistory({
@@ -117,6 +146,27 @@ export function AuctionContextController({ children }) {
         });
       });
   };
+
+  const singleBidHistory = ( ref, pagenumber = 1) => {
+    toggleLoading(true)
+    console.log('REFERENCE ', ref)
+    axios
+      .get(`auction/bid/history/${ref}?page=${pagenumber}`)
+      .then((res) => {
+        toggleLoading(false);
+        setSingleBidHistory({
+          data: res.data,
+        });
+        setCurrentBid(res.data.data)
+      })
+      .catch((err) => {
+        console.log(err.response);
+        toggleLoading(false);
+        setSingleBidHistory({
+          data: err.response.data,
+        });
+      });
+  }
   
   const getSingleClaim = (data) => {
     toggleLoading(true);
@@ -195,6 +245,10 @@ export function AuctionContextController({ children }) {
         checkoutOnPickup,
         setOrderReceipt,
         calculateDelivery,
+        listHomeAuctions,
+        singleBidHistory,
+        currentBid,
+        singleBid,
         deliveryState,
         orderReceipt,
         checkoutState,
@@ -205,6 +259,10 @@ export function AuctionContextController({ children }) {
         singleAuctionState,
         placeBidState,
         inputs,
+        listHomeAuctionState,
+        auctionCurrentPage,
+        auctionPerPage,
+        auctionTotalPage,
       }}
     >
       {children}

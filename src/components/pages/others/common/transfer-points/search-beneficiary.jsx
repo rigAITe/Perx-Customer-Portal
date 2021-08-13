@@ -12,7 +12,7 @@ import swal from "sweetalert";
 import toastr from "toastr";
 import Select from "react-select";
 import "./css/transfer-points.css";
-import { nanoid }from 'nanoid'
+import { nanoid } from 'nanoid'
 import axios from 'axios'
 
 function TransferPoints() {
@@ -21,7 +21,7 @@ function TransferPoints() {
   const [transferSummaryData, setTransferSummaryData] = useState(false);
   const [showBeneficiaryDataPage, setShowBeneficiaryDataPage] = useState(false);
   const [checked, setChecked] = useState(false);
-  const [ benefit, setBenefit ] = useState([])
+  const [benefit, setBenefit] = useState([])
 
 
   const {
@@ -43,11 +43,11 @@ function TransferPoints() {
       success: "alert-success",
       warning: "alert-warning",
     },
-  };  
+  };
 
   useEffect(() => {
     getBeneficiaryList();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (hideBeneficiaryDataPage) {
@@ -138,7 +138,6 @@ function TransferPoints() {
     const save_beneficiary = event.target.checked === true ? 1 : 0;
     beneficiaryData.current.save_beneficiary = save_beneficiary;
   };
-
   const handleSearchInput = (event) => {
     const card_number = event.value;
     setInputs((inputs) => ({
@@ -150,14 +149,14 @@ function TransferPoints() {
 
   useEffect(() => {
     axios.get(`user/beneficiaries`)
-      .then( res => setBenefit(res.data.data))
+      .then(res => setBenefit(res.data.data))
   }, [])
 
-  const newArr = benefit.map( res => {
+  const newArr = benefit.map(res => {
     let name = `${res.first_name} ${res.last_name == null ? '' : res.last_name}`
-    const data  = {
+    const data = {
       value: res.membership_number,
-      label : name
+      label: name
     }
     return data
   })
@@ -196,7 +195,7 @@ function TransferPoints() {
                 />
               </div>
 
-              <div style={{marginTop: '30px', paddingLeft: '10px', textAlign: 'end',}}>   
+              <div style={{ marginTop: '30px', paddingLeft: '10px', textAlign: 'end', }}>
                 <button
                   onClick={() => verifyCardNumber(inputs.card_number)}
                   type="button"
@@ -293,7 +292,7 @@ function TransferPoints() {
         </div>
       </form>
       {showTransferSummary === true ? (
-        <TransferSummary data={transferSummaryData}  setShowTransferSummary={setShowTransferSummary} setShowBeneficiaryDataPage={setShowBeneficiaryDataPage}/>
+        <TransferSummary data={transferSummaryData} setShowTransferSummary={setShowTransferSummary} setShowBeneficiaryDataPage={setShowBeneficiaryDataPage} />
       ) : (
         ""
       )}

@@ -54,6 +54,8 @@ function ViewSingleAuction(props) {
     }
   }, [singleAuctionState.data]);
 
+  console.log('SINGLE PRODUCT ', getProduct)
+
   return (
     <>
       {loading ? <Loading /> : ""}
@@ -81,13 +83,12 @@ function ViewSingleAuction(props) {
                   </div>
                 </div>
               </div>
-
               {/* <SingleTab product={null} /> */}
             </div>
           </div>
         </div>
 
-        <FeaturedProductsOne />
+        {/* <FeaturedProductsOne /> */}
       </div>
     </>
   );

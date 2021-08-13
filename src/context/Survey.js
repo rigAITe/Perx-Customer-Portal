@@ -15,7 +15,7 @@ export function SurveyContextController({ children }) {
   const getSurveyList = () => {
     toggleLoading(true);
     axios
-      .get(`survey/sigma-prime/list_surveys`)
+      .get(`survey/list/surveys`)
       .then((res) => {
         toggleLoading(false);
         setSurveyList({
@@ -34,7 +34,7 @@ export function SurveyContextController({ children }) {
   const getSurveyQuestions = (survey_slug) => {
     toggleLoading(true);
     axios
-      .get(`survey/sigma-prime/${survey_slug}/questions`)
+      .get(`survey/${survey_slug}/questions`)
       .then((res) => {
         toggleLoading(false);
         setSurveyQuestions({

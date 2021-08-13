@@ -10,13 +10,17 @@ import swal from "sweetalert";
 import Loading from "../../../features/Loader/Loading";
 import Countdown from "react-countdown";
 import moment from "moment";
+import Pagination from "react-js-pagination";
 
-const AuctionBidHistory = () => {
+function AuctionBidHistory() {
   const { bidHistory, bidHistoryState, setInputs, inputs } = useContext(
     AuctionContext
   );
   const { loading } = useContext(LoaderContext);
   const [getHistories, setHistories] = useState([]);
+  const [currentpage, setCurrentpage] = useState()
+  const [total, setTotal] = useState()
+  const [perPage, setPerPage] = useState()
 
   const user = JSON.parse(localStorage.getItem("user_data"));
 
@@ -27,6 +31,8 @@ const AuctionBidHistory = () => {
   useEffect(() => {
     bidHistory();
   }, []);
+
+  console.log('BID STATE ', perPage)
 
   useEffect(() => {
     if (
@@ -46,9 +52,14 @@ const AuctionBidHistory = () => {
       isStateHandled(bidHistoryState) &&
       isStateHandled(bidHistoryState).status
     ) {
-      setHistories(bidHistoryState.data.data);
+      setHistories(bidHistoryState.data.data.data);
+      setCurrentpage(bidHistoryState.data.data.current_page)
+      setTotal(bidHistoryState.data.data.total)
+      setPerPage(bidHistoryState.data.data.per_page)
     }
   }, [bidHistoryState.data]);
+
+  // console.log('POINT ', point)
 
   const loadHistories = getHistories.map((history) => {
     return (
@@ -75,9 +86,8 @@ const AuctionBidHistory = () => {
         <td>
           <div className="d-flex flex-row justify-content-between align-items-center increase-width">
             <p
-              className={`${history.status === 1 ? "text-warning" : ""} ${
-                history.status === 3 || 2 ? "text-success" : ""
-              }`}
+              className={`${history.status === 1 ? "text-warning" : ""} ${history.status === 3 || 2 ? "text-success" : ""
+                }`}
             >
               {history.status_name}
             </p>
@@ -101,7 +111,7 @@ const AuctionBidHistory = () => {
   });
 
   return (
-    <div className="auction-container">
+    <div className="auction-container noy">
       {loading ? <Loading /> : ""}
       <div className="card cap-table">
         <div className="card-body">
@@ -124,9 +134,21 @@ const AuctionBidHistory = () => {
             </table>
           </div>
         </div>
+        <div style={{paddingTop: '20px'}}>
+          <Pagination 
+            activePage={currentpage}
+            totalItemsCount={total}
+            itemsCountPerPage={perPage}
+            onChange={(pageNumber) => bidHistory(pageNumber)}
+            itemClass="page-item"
+            linkClass="page-link"
+            firstPageText="First"
+            lastPageText="Last"
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-export default AuctionBidHistory;
+export default React.memo(AuctionBidHistory);

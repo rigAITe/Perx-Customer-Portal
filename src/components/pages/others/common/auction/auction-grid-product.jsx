@@ -21,44 +21,67 @@ function AuctionProducts(props) {
     listAuctions();
   }, []);
 
-  useEffect(() => {
-    if (listAuctionState.data !== null) {
-      if (
-        listAuctionState.data.status === 1 &&
-        listAuctionState.data.success === true
-      ) {
-        setProducts(listAuctionState.data.data);
-      }
-
-      if (
-        listAuctionState.data.status === 0 &&
-        listAuctionState.data.success === false
-      ) {
-        swal({
-          title: "Oops!",
-          text: listAuctionState.data.message,
-          icon: "error",
-          button: "Ok",
-        });
-      }
+  useEffect(() => {  
+    if (listAuctionState !== null) { 
+      setProducts(listAuctionState);
+    } else {
+      swal({
+        title: "Oops!",
+        text: listAuctionState.message,
+        icon: "error",
+        button: "Ok",
+      });
     }
-  }, [listAuctionState]);
+  })
 
-  const displayProducts = getProducts.map((product) => {
-    return (
-      <DisplayProducts
-        discount={true}
-        addClass="inner-quickview inner-icon pl-3 pr-3"
-        product={product}
-        key={"flex-grid" + "1 increasing"}
-      />
-    );
-  });
+  // useEffect(() => {
+  //   if (listAuctionState !== null) {
+  //     if (
+  //       listAuctionState.status === 1 &&
+  //       listAuctionState.success === true
+  //     ) {
+  //       setProducts(listAuctionState);
+  //     }
+
+  //     if (
+  //       listAuctionState.data.status === 0 &&
+  //       listAuctionState.data.success === false
+  //     ) {
+  //       swal({
+  //         title: "Oops!",
+  //         text: listAuctionState.data.message,
+  //         icon: "error",
+  //         button: "Ok",
+  //       });
+  //     }
+  //   }
+  // }, [listAuctionState]);
+
+  console.log('LIST AUCTION STATE ', listAuctionState)
+
+  // const displayProducts = listAuctionState.map((product) => {
+    
+  //   return (
+  //     <DisplayProducts
+  //       discount={true}
+  //       addClass="inner-quickview inner-icon pl-3 pr-3"
+  //       product={product}
+  //       key={"flex-grid" + "1 increasing"}
+  //     />
+  //   );
+  // });
 
   return (
     <div className={`product-group row mx-0 divide-line up-effect`}>
       {loading ? <Loading /> : ""}
-      {displayProducts}
+      {listAuctionState.map(res => 
+        <DisplayProducts
+        discount={true}
+        addClass="inner-quickview inner-icon pl-3 pr-3"
+        product={res}
+        key={"flex-grid" + "1 increasing"}
+      />
+      )}
     </div>
   );
 }

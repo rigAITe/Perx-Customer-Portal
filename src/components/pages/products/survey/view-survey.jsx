@@ -7,6 +7,7 @@ import SuccessModal from "../../../../../src/components/common/modals/SuccessMod
 import angry from "./images/angry.png";
 import { SurveyContext } from "../../../../context/Survey";
 import swal from "sweetalert";
+import axios from 'axios'
 
 const ViewSurvey = (props) => {
   const [questionNo, setQuestionNo] = useState(1);
@@ -14,11 +15,26 @@ const ViewSurvey = (props) => {
   const [finishedSurvey, setFinishedSurvey] = useState(false);
   const { getSurveyQuestions, surveyQuestions } = useContext(SurveyContext);
   const [questions, setQuestions] = useState([]);
+  const [slug, setSlug] = useState('')
+  const [question, setQuestion] = useState('')
   const totalQuestions = useRef(0);
+
+  const [check, setCheckbox] = useState('')
+
+  const setOption = (ex) => {
+    setCheckbox(ex)
+  }
+
+  console.log(check)
+  console.log('SLUG ', slug)
+  console.log('question ', question)
+
 
   useEffect(() => {
     const survey_slug = getURLParameter("survey_slug");
     getSurveyQuestions(survey_slug);
+    setSlug(survey_slug)
+    saveQuestion()
   }, []);
 
   useEffect(() => {
@@ -27,8 +43,8 @@ const ViewSurvey = (props) => {
         surveyQuestions.data.status === 1 &&
         surveyQuestions.data.success === true
       ) {
-        totalQuestions.current = surveyQuestions.data.data.length;
-        setQuestions(surveyQuestions.data.data);
+        totalQuestions.current = surveyQuestions.data.data.questions.length;
+        setQuestions(surveyQuestions.data.data.questions);
       }
 
       if (
@@ -45,6 +61,9 @@ const ViewSurvey = (props) => {
     }
   }, [surveyQuestions.data]);
 
+  console.log('SURVEY ', question)
+
+
   // console.log(surveyQuestions);
 
   const getURLParameter = (param) => {
@@ -58,6 +77,12 @@ const ViewSurvey = (props) => {
   const next = () => {
     if (questionNo !== totalQuestions.current) {
       setQuestionNo(questionNo + 1);
+      // saveQuestion()
+      // axios.post('survey/single/response', {
+      //   survey_slug: slug,
+      //   question_slug: ,
+      //   response[0]: 
+      // })
       return;
     }
     setFinishedSurvey(true);
@@ -66,6 +91,7 @@ const ViewSurvey = (props) => {
   const previous = () => {
     if (questionNo == 1) return;
     setQuestionNo(questionNo - 1);
+    // saveQuestion()
   };
 
   const submitSurvey = () => {
@@ -77,10 +103,72 @@ const ViewSurvey = (props) => {
     if (props.location) {
       console.log(props.location.state);
       getSurveyQuestions();
-    }else{
+    } else {
       getSurveyQuestions();
     }
   }, [])
+
+  const saveQuestion = () => {
+    questions &&
+      questions.map((survey, index) => console.log(survey.question_slug))
+  }
+
+  const returnData = () => {
+
+    return (
+      questions &&
+      questions.map((survey, index) => {
+        // setQuestion(survey.question_slug)
+        // saveQuestion(survey.question_slug)
+
+        if (questionNo === index + 1 && !finishedSurvey) {
+
+          return (
+            <div>
+              <div className="d-flex flex-row align-items-center justify-content-between">
+                <h5>
+                  {index + 1}. {survey.question}
+                </h5>
+                <p className="bold">
+                  Question {index + 1} of {totalQuestions.current}
+                </p>
+              </div>
+
+              {survey.response_type_id === 1
+                ? survey.options.map((option) => {
+                  return (
+                    <AnswerBar
+                      text={option.option}
+                      logo={angry}
+                      height="40px"
+                      slug={option.slug}
+                      setOption={setOption}
+                    />
+                  );
+                })
+                : ""}
+
+              {survey.response_type_id === 3 ? (
+                <textarea
+                  placeholder="Type here"
+                  style={{ width: "100%" }}
+                  name=""
+                  id=""
+                  rows="8"
+                ></textarea>
+              ) : (
+                ""
+              )}
+              <div className="mb-2"></div>
+            </div>
+          );
+        }
+        // setQuestion(survey.question_slug)
+      })
+    )
+  }
+
+
 
   return (
     <div>
@@ -107,9 +195,14 @@ const ViewSurvey = (props) => {
             <div className="card cap-table">
               <div className="card-body">
                 <div>
-                  {questions &&
+                  {returnData()}
+                  {/* {questions &&
                     questions.map((survey, index) => {
+                      // setQuestion(survey.question_slug)
+                      // saveQuestion(survey.question_slug)
+
                       if (questionNo === index + 1 && !finishedSurvey) {
+
                         return (
                           <div>
                             <div className="d-flex flex-row align-items-center justify-content-between">
@@ -123,14 +216,16 @@ const ViewSurvey = (props) => {
 
                             {survey.response_type_id === 1
                               ? survey.options.map((option) => {
-                                  return (
-                                    <AnswerBar
-                                      text={option.option}
-                                      logo={angry}
-                                      height="40px"
-                                    />
-                                  );
-                                })
+                                return (
+                                  <AnswerBar
+                                    text={option.option}
+                                    logo={angry}
+                                    height="40px"
+                                    slug={option.slug}
+                                    setOption={setOption}
+                                  />
+                                );
+                              })
                               : ""}
 
                             {survey.response_type_id === 3 ? (
@@ -148,7 +243,7 @@ const ViewSurvey = (props) => {
                           </div>
                         );
                       }
-                    })}
+                    })} */}
 
                   {finishedSurvey ? (
                     <div className="text-center">
@@ -169,7 +264,7 @@ const ViewSurvey = (props) => {
                 </div>
 
                 {questionNo !== totalQuestions.current + 1 &&
-                !finishedSurvey ? (
+                  !finishedSurvey ? (
                   <div
                     id="next-previous-buttons"
                     className="d-flex flex-row align-items-center justify-content-end"
