@@ -191,7 +191,10 @@ function Header(props) {
                   <li>
                     <Link
                       className={`${
-                        isURLActive(`${process.env.PUBLIC_URL}/pages/entertainment/cinema`) === true
+                        isURLActive(`${process.env.PUBLIC_URL}/pages/entertainment/cinema`) 
+                        || 
+                        isURLActive(`${process.env.PUBLIC_URL}/pages/entertainment/events`)
+                        === true
                           ? "header-active"
                           : ""
                       }`}
@@ -435,6 +438,9 @@ function Header(props) {
         }
         { isURLActive(`${process.env.PUBLIC_URL}/pages/experience&travel/experience`) || isURLActive(`${process.env.PUBLIC_URL}/pages/experience&travel/travel`)  === true
           ? <SubMenu.Experience_Travel_subMenu/> : ""
+        }
+        { isURLActive(`${process.env.PUBLIC_URL}/pages/entertainment/cinema`) || isURLActive(`${process.env.PUBLIC_URL}/pages/entertainment/events`)  === true
+          ? <SubMenu.Entertainment_subMenu/> : ""
         }
         </div>
       </div>

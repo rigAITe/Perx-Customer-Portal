@@ -24,7 +24,7 @@ function SuccessModal(props) {
   const closeModal = () => {
     // closeSuccessModal();
     setOpen(!open);
-    window.location.reload()
+    window.location = `${process.env.PUBLIC_URL}/pages/survey`
   };
 
   return (

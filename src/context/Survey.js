@@ -33,6 +33,7 @@ export function SurveyContextController({ children }) {
 
   const getSurveyQuestions = (survey_slug) => {
     toggleLoading(true);
+    console.log('survey is ', survey_slug)
     axios
       .get(`survey/${survey_slug}/questions`)
       .then((res) => {

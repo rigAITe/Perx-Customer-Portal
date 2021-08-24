@@ -1,18 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import "./answer-bar.css";
 
 const AnswerBar = (props) => {
   const { logo } = props;
 
-  // const [check, setCheckbox] = useState('')
+  useEffect(() => {
+    if (props.survey.response.length == 0) {
+      return;
+    } else {
+      console.log('RESPONSE FOR TRUE ', props.questionType)
+      props.setQuestionType(true)
+    }
+    if (props.questionType) {
+      let response = props.survey.response[0].response_option
+      props.setDefault(response)
+    } else {
+      return;
+    }
+  }, [props.questionType])
 
-  // console.log(check)
-
-  // const setOption = (e) => {
-  //   setCheckbox(e.target.value)
-  //   // console.log(e.target.value)
-  // }
-
+  props.setQuestion(props.survey.question_slug)
 
   return (
     <>
@@ -33,8 +40,8 @@ const AnswerBar = (props) => {
         >
           <div className="no-margin d-flex ">
             {/* <img className="answer-bar-emoji" src={logo} alt="" /> */}
-            <label className="my-auto card " style={{width: "100%",   display: 'block', padding: 15}}>
-              <input style={{marginRight: 10}} type="radio" name = "choice" value={props.slug} onChange={() => props.setOption(props.slug)} />
+            <label className="my-auto card " style={{ width: "100%", display: 'block', padding: 15 }}>
+              <input style={{ marginRight: 10 }} type="radio" name="choice" value={props.slug} onChange={props.setOption} checked={props.value === props.slug} />
               {props.text}
             </label>
           </div>{" "}

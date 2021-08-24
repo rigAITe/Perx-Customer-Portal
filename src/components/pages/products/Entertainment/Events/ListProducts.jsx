@@ -35,10 +35,10 @@ function ListCinemaProducts(props) {
             </span>
             <span className="product-image-hover">
               <img src={event1} className="last-image" alt="product" />
-            </span>
+            </span>``
           </Link>
 
-          <Link to={buttonLink} className="btn-quickview" title="View Branches">
+          <Link to={{pathname:"/pages/entertainment/event/single/3", query: props.data}} className="btn-quickview" title="View Branches">
             {buttonTitle}
           </Link>
         </figure>
@@ -46,8 +46,8 @@ function ListCinemaProducts(props) {
           <div className="mt-4 price-box width-100">
             <p className="text-uppercase medium-text muted-text">Event</p>
             <div className="bold medium-text text-dark">
-              The Mayor of Lagos 2020<br></br>
-              9th Sunday, September, 2018 - 5:00pm
+              <p>{props.title}</p> <br></br>
+              {props.date}
             </div>
           </div>
         </div>

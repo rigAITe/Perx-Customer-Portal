@@ -2,15 +2,19 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { findIndex, getPrice } from "../../../../../../utils/index.js";
-import LoaderContext from "../../../../../../context/Loading.js";
 import Loading from "../../../../../features/Loader/Loading.jsx";
 import { isStateHandled, formatNumber } from "../../../../../../utils/index.js";
 import swal from "sweetalert";
 import SuccessfulBidModal from "../../../../../common/modals/SuccessfulBidModal.jsx";
-
+import { LoaderContext } from "../../../../../../context/Loading.js";
 import "./singleEvent.css";
+import AddRow from "./AddRow.jsx";
 
 function SingleDetail(props) {
+  const { toggleLoading } = useContext(LoaderContext);
+
+  const [data, setData] = useState([])
+  const [ticket, setTicket] = useState([])
   const { loading } = useContext(LoaderContext);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { wishlist, product, isSticky = false, auction, auction_bid } = props;
@@ -57,23 +61,41 @@ function SingleDetail(props) {
     }
   }
 
+  useEffect(() => {
+    toggleLoading(true);
+    if (props.data && props.data.ticketClassses !== undefined) {
+      toggleLoading(false);
+      setData(props.data)
+      setTicket(props.data.ticketClassses)
+    }
+  }, [props.data]);
+
+  console.log('DATA ', (ticket))
+
+  const [value, setValue] = useState(1)
+
+  const onChange = (e) => {
+    setValue({[e.target.name]: e.target.value})
+  }
+
+
   return (
     <>
       {/* {loading ? <Loading /> : ""} */}
       <div className="skel-pro skel-detail"></div>
       <div className="product-single-details">
         <div className="col-md-8 row less-margin">
-          <h4>The Mayor of Lagos</h4>
+          <h4>{props.data.title}</h4>
         </div>
         <div className="muted-text bold">Date:</div>
-        <div className="muted-text bold">9 September, 2018 - 5:00pm</div>
+        <div className="muted-text bold">{props.data.date}</div>
         <h5 className="mt-3">Tickets</h5>
         <div className="p-0 col-lg-12">
           <div className="wishlist-table-container">
             <table className="table table-order table-wishlist">
               <thead>
                 <tr>
-                  <th>Person</th>
+                  <th>Title</th>
                   <th>Location</th>
                   <th>Price</th>
                   <th>Quantity</th>
@@ -81,143 +103,21 @@ function SingleDetail(props) {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Adult</td>
-                  <td>
-                    <div>Chida Event Center, Abuja</div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="d-flex">
-                      <div className={`mt-1 product-single-qty`}>
-                        <div className="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                          <span className="input-group-btn input-group-prepend">
-                            <button
-                              className="btn btn-outline btn-down-icon bootstrap-touchspin-down"
-                              type="button"
-                            ></button>
-                          </span>
-                          <input
-                            className="horizontal-quantity form-control"
-                            type="number"
-                            min="1"
-                            max="5"
-                            value="1"
-                          />
-                          <span className="input-group-btn input-group-append">
-                            <button
-                              className="btn btn-outline btn-up-icon bootstrap-touchspin-up"
-                              type="button"
-                            ></button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Student</td>
-                  <td>
-                    <div>Chida Event Center, Abuja</div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="d-flex">
-                      <div className={`mt-1 product-single-qty`}>
-                        <div className="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                          <span className="input-group-btn input-group-prepend">
-                            <button
-                              className="btn btn-outline btn-down-icon bootstrap-touchspin-down"
-                              type="button"
-                            ></button>
-                          </span>
-                          <input
-                            className="horizontal-quantity form-control"
-                            type="number"
-                            min="1"
-                            max="5"
-                            value="1"
-                          />
-                          <span className="input-group-btn input-group-append">
-                            <button
-                              className="btn btn-outline btn-up-icon bootstrap-touchspin-up"
-                              type="button"
-                            ></button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Children</td>
-                  <td>
-                    <div>Chida Event Center, Abuja</div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="d-flex">
-                      <div className={`mt-1 product-single-qty`}>
-                        <div className="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                          <span className="input-group-btn input-group-prepend">
-                            <button
-                              className="btn btn-outline btn-down-icon bootstrap-touchspin-down"
-                              type="button"
-                            ></button>
-                          </span>
-                          <input
-                            className="horizontal-quantity form-control"
-                            type="number"
-                            min="1"
-                            max="5"
-                            value="1"
-                          />
-                          <span className="input-group-btn input-group-append">
-                            <button
-                              className="btn btn-outline btn-up-icon bootstrap-touchspin-up"
-                              type="button"
-                            ></button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                </tr>
+                {
+                  ticket.map((res) =>
+                    <AddRow
+                      title={res.title}
+                      venue={res.venue}
+                      price={res.price}
+                      point_name={res.point_name}
+                      value={value}
+                      onChange={onChange}
+                      id={res.classid}
+                      key={res.classid}
+                    />
+                  )
+                }
               </tbody>
-
               <tfoot>
                 <tr>
                   <td colSpan="5" className="clearfix">

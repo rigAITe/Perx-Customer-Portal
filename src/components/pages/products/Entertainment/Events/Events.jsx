@@ -1,16 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Helmet } from "react-helmet";
 import imagesLoaded from "imagesloaded";
-
 import Breadcrumb from "../../../../common/breadcrumb";
 import GridProduct from "./grid-events-products";
 import "./events.css";
+import swal from "sweetalert";
+
+
 
 function Events(props) {
   const [curPage, setCurPage] = useState(1);
   const [layout, setLayout] = useState("grid");
   const [productCount, setProductCount] = useState(0);
   const [displayCount, setDisplayCount] = useState(12);
+  const [list, setList] = useState([]);
+
+
+  // useEffect(() => {
+  //   if (surveyList.data !== null) {
+  //     if (surveyList.data.status === 1 && surveyList.data.success === true) {
+  //       setList(surveyList.data.data);
+  //     }
+
+  //     if (surveyList.data.status === 0 && surveyList.data.success === false) {
+  //       swal({
+  //         title: "Oops!",
+  //         text: surveyList.data.message,
+  //         icon: "error",
+  //         button: "Ok",
+  //       });
+  //     }
+  //   }
+  // }, [surveyList.data]);
+
+  // console.log('EVENT ', even)
 
   // to use lazy loading
   // useEffect(() => {

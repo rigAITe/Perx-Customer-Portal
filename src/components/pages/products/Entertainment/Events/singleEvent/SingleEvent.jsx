@@ -24,6 +24,7 @@ import event4 from "../../assets/events/event4.svg";
 function SingleEvent(props) {
   const { loading } = useContext(LoaderContext);
   const [getProduct, setProduct] = useState([]);
+  const [singleData, setSingleData] = useState({})
   const buttonTitle = "View";
   const buttonLink = "/pages/entertainment/movie/single/1";
   const getAuctionRefNo = () => {
@@ -31,6 +32,11 @@ function SingleEvent(props) {
     const auctionRefNo = pathname.split("/")[3];
     return auctionRefNo;
   };
+
+  useEffect(() => {
+    setSingleData(props.location.query)
+  })
+
 
   return (
     <>
@@ -54,7 +60,7 @@ function SingleEvent(props) {
                     product={{ image: [1] }}
                   />
                   <div className="col-lg-8 col-md-8">
-                    <SingleDetail auction product={getProduct} />
+                    <SingleDetail auction product={getProduct} data={singleData}/>
                   </div>
                 </div>
               </div>

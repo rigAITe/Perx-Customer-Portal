@@ -47,7 +47,7 @@ export const MultipleDestinations = () => {
 
 
 
-  console.log('Normal Flight Details', destinationAndReturn)
+  console.log('Normal Flight Details', flights)
 
     return(
         <>
@@ -62,7 +62,6 @@ export const MultipleDestinations = () => {
               </p>
               <input
                 type="text"
-                // id="quantity"
                 name="fromWhere"
                 onChange={handleChange}
                 class="form-control input-number"
@@ -75,7 +74,6 @@ export const MultipleDestinations = () => {
               <p className="text-dark medium-text">To where</p>
               <input
                 type="text"
-                // id="quantity"
                 name="toWhere"
                 onChange={handleChange}
                 class="form-control input-number"
@@ -84,32 +82,28 @@ export const MultipleDestinations = () => {
                 max="100"
               />
             </div>
-            <div className="col-6 col-lg-3">
+            <div className="col-6 col-lg-6">
               <p className="text-dark medium-text">Leaving on</p>{" "}
               <input
                 type="date"
-                // id="quant"
                 name="leavingOn"
                 onChange={handleChange}
                 class="form-control input-number"
-                // value="May 25, 2021"
                 min="1"
                 max="100"
               />
             </div>
-            <div className="col-6 col-lg-3">
+            {/* <div className="col-6 col-lg-3">
               <p className="text-dark medium-text">Leaving on</p>{" "}
               <input
                 type="date"
-                // id="quant"
                 name="leavingOn"
                 onChange={handleChange}
                 class="form-control input-number"
-                // value="May 25, 2021"
                 min="1"
                 max="100"
               />
-            </div>
+            </div> */}
           </div>
           {/* <div className="row">
             

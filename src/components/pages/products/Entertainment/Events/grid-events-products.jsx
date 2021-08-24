@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import ProductTypeOne from "./ListProducts";
@@ -10,8 +10,48 @@ import event3 from "./../assets/events/event3.svg";
 import event4 from "./../assets/events/event4.svg";
 import event5 from "./../assets/events/event5.svg";
 import event6 from "./../assets/events/event6.svg";
+import { EventContext } from "../../../../../context/Event";
+import swal from "sweetalert";
+
+// import { EventContext } from "./Event";
 
 function GridProduct(props) {
+
+
+  const { getEvents, events } = useContext(EventContext);
+  const [data, setData] = useState([])
+
+
+  useEffect(() => {
+    getEvents()
+    // getData()
+  }, [])
+
+  useEffect(() => {
+    if (events.data !== null) {
+      if (events.data.status === 1 && events.data.success === true) {
+        setData(events.data.data)
+      }
+
+      if (events.data.status === 0 && events.data.success === false) {
+        swal({
+          title: "Oops!",
+          text: events.data.message,
+          icon: "error",
+          button: "Ok",
+        });
+      }
+    }
+  }, [events.data]);
+
+  // const getData = () => {
+  //   setData(events.data)
+  // }
+
+  console.log('EVENTS ', data)
+
+
+
   const { displayCount, cols = 3, productType = "", curPage, discount } = props;
   let subClass = getClass(cols);
   let products = props.products;
@@ -37,12 +77,11 @@ function GridProduct(props) {
 
   return (
     <div
-      className={`product-group ${
-        productType === "flex-grid" && props.type === "grid"
-          ? "row mx-0 divide-line up-effect"
-          : "row row-sm position-relative " +
-            (props.type === "list" ? "product-intro list-style" : "")
-      } `}
+      className={`product-group ${productType === "flex-grid" && props.type === "grid"
+        ? "row mx-0 divide-line up-effect"
+        : "row row-sm position-relative " +
+        (props.type === "list" ? "product-intro list-style" : "")
+        } `}
     >
       {products.length === 0 ? (
         <h4 className="mt-3 ml-4 text-dark" style={{ fontWeight: 400 }}>
@@ -52,102 +91,24 @@ function GridProduct(props) {
       ) : (
         ""
       )}
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event4}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event1}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event2}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event3}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event5}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event6}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event1}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={event2}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
+
+      {data.map((event) =>
+        <div className="col-6 col-md-3 p-0" key={event.id}>
+          <div className="skel-pro skel-pro-grid"></div>
+          <ProductTypeOne
+            buttonTitle={buttonTitle}
+            // buttonLink={buttonLink}
+            data={event}
+            imageA={event4}
+            discount
+            addClass="inner-quickview inner-icon pl-3 pr-3"
+            product={null}
+            // key={"flex-grid"}
+            title={event.title}
+            date={event.date}
+          />
+        </div>
+      )}
     </div>
   );
 }

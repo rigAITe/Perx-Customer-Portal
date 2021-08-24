@@ -7,9 +7,14 @@ import SuccessModal from "../../../../../src/components/common/modals/SuccessMod
 import angry from "./images/angry.png";
 import { SurveyContext } from "../../../../context/Survey";
 import swal from "sweetalert";
+import { Textarea } from "./text-area";
 import axios from 'axios'
+import { LoaderContext } from "../../../../context/Loading";
 
 const ViewSurvey = (props) => {
+  
+  const { toggleLoading } = useContext(LoaderContext);
+
   const [questionNo, setQuestionNo] = useState(1);
   const [showSuccess, setShowSuccess] = useState(false);
   const [finishedSurvey, setFinishedSurvey] = useState(false);
@@ -18,23 +23,42 @@ const ViewSurvey = (props) => {
   const [slug, setSlug] = useState('')
   const [question, setQuestion] = useState('')
   const totalQuestions = useRef(0);
+  const [textArea, setTextArea] = useState([])
+  const [check, setCheckbox] = useState([])
+  const [responses, setResponses] = useState([])
+  const [questionType, setQuestionType] = useState()
+  const [endDate, setEndDate] = useState()
+  const [numberOfQuestions, setNumberOfQuestions] = useState()
+  const [surveyDescription, setSurveyDescription] = useState()
+  const [allQuestion, setAllQuestion] = useState([])
+  const [allAnswer, setAllAnswer] = useState([])
+  const [questAns, setQuestAns] = useState([])
 
-  const [check, setCheckbox] = useState('')
+  console.log('Get survey ', surveyQuestions)
 
-  const setOption = (ex) => {
-    setCheckbox(ex)
+
+  const setOption = (e) => {
+    setCheckbox(e.target.value)
   }
 
-  console.log(check)
-  console.log('SLUG ', slug)
-  console.log('question ', question)
+  const setDefault = (x) => {
+    setCheckbox(x)
+  }
 
+  const setDefeultText = (x) => {
+    setTextArea(x)
+  }
+
+  const textarea = (e) => {
+    setTextArea(e.target.value)
+  }
+
+  // console.log('question ', question)
 
   useEffect(() => {
     const survey_slug = getURLParameter("survey_slug");
     getSurveyQuestions(survey_slug);
     setSlug(survey_slug)
-    saveQuestion()
   }, []);
 
   useEffect(() => {
@@ -45,6 +69,9 @@ const ViewSurvey = (props) => {
       ) {
         totalQuestions.current = surveyQuestions.data.data.questions.length;
         setQuestions(surveyQuestions.data.data.questions);
+        setEndDate(surveyQuestions.data.data.end_date)
+        setNumberOfQuestions(surveyQuestions.data.data.questions.length);
+        setSurveyDescription(surveyQuestions.data.data.description)
       }
 
       if (
@@ -61,8 +88,7 @@ const ViewSurvey = (props) => {
     }
   }, [surveyQuestions.data]);
 
-  console.log('SURVEY ', question)
-
+  // console.log('SURVEY ', question)
 
   // console.log(surveyQuestions);
 
@@ -75,27 +101,37 @@ const ViewSurvey = (props) => {
   };
 
   const next = () => {
+    save()
     if (questionNo !== totalQuestions.current) {
       setQuestionNo(questionNo + 1);
-      // saveQuestion()
-      // axios.post('survey/single/response', {
-      //   survey_slug: slug,
-      //   question_slug: ,
-      //   response[0]: 
-      // })
       return;
     }
     setFinishedSurvey(true);
   };
 
   const previous = () => {
+    // getSurveyQuestions(slug)
+    responses.pop()
     if (questionNo == 1) return;
     setQuestionNo(questionNo - 1);
-    // saveQuestion()
+    console.log('PREVIOUS ', check)
   };
 
+  const submitAllResponses = {
+    survey_slug: slug,
+    survey_response: responses
+  }
+
   const submitSurvey = () => {
-    setShowSuccess(!showSuccess);
+    toggleLoading(true)
+    axios.post(`survey/all/response`, submitAllResponses)
+      .then(res => {
+        console.log('RESPONSE ALL DATA', res)
+        toggleLoading(false)
+        setShowSuccess(!showSuccess);
+        console.log(res)
+      })
+      .catch(err => console.log(err))
   };
 
   useEffect(() => {
@@ -108,18 +144,30 @@ const ViewSurvey = (props) => {
     }
   }, [])
 
-  const saveQuestion = () => {
-    questions &&
-      questions.map((survey, index) => console.log(survey.question_slug))
+  const dataObj = {
+    survey_slug: slug,
+    question_slug: question,
+    response: questionType == true ? new Array(check) : new Array(textArea)
   }
+  console.log('RESPONSE ', responses)
+
+
+
+  const save = () => {
+    axios.post(`survey/single/response`, dataObj)
+      .then(res => {
+        responses.push(dataObj)
+        console.log(res)
+      })
+      .catch(err => console.log(err))
+  }
+
 
   const returnData = () => {
 
     return (
       questions &&
       questions.map((survey, index) => {
-        // setQuestion(survey.question_slug)
-        // saveQuestion(survey.question_slug)
 
         if (questionNo === index + 1 && !finishedSurvey) {
 
@@ -143,19 +191,29 @@ const ViewSurvey = (props) => {
                       height="40px"
                       slug={option.slug}
                       setOption={setOption}
+                      survey={survey}
+                      setQuestion={setQuestion}
+                      value={check}
+                      setDefault={setDefault}
+                      setQuestionType={setQuestionType}
+                      questionType={questionType}
                     />
                   );
                 })
                 : ""}
 
               {survey.response_type_id === 3 ? (
-                <textarea
-                  placeholder="Type here"
-                  style={{ width: "100%" }}
-                  name=""
-                  id=""
-                  rows="8"
-                ></textarea>
+                <Textarea
+                  textarea={textarea}
+                  survey={survey}
+                  setQuestion={setQuestion}
+                  setDefeultText={setDefeultText}
+                  textArea={textArea}
+                  setQuestionType={setQuestionType}
+                  questionType={questionType}
+                // setAllQuestion={setAllQuestion}
+                // allQuestion={allQuestion}
+                />
               ) : (
                 ""
               )}
@@ -163,7 +221,6 @@ const ViewSurvey = (props) => {
             </div>
           );
         }
-        // setQuestion(survey.question_slug)
       })
     )
   }
@@ -195,55 +252,8 @@ const ViewSurvey = (props) => {
             <div className="card cap-table">
               <div className="card-body">
                 <div>
+
                   {returnData()}
-                  {/* {questions &&
-                    questions.map((survey, index) => {
-                      // setQuestion(survey.question_slug)
-                      // saveQuestion(survey.question_slug)
-
-                      if (questionNo === index + 1 && !finishedSurvey) {
-
-                        return (
-                          <div>
-                            <div className="d-flex flex-row align-items-center justify-content-between">
-                              <h5>
-                                {index + 1}. {survey.question}
-                              </h5>
-                              <p className="bold">
-                                Question {index + 1} of {totalQuestions.current}
-                              </p>
-                            </div>
-
-                            {survey.response_type_id === 1
-                              ? survey.options.map((option) => {
-                                return (
-                                  <AnswerBar
-                                    text={option.option}
-                                    logo={angry}
-                                    height="40px"
-                                    slug={option.slug}
-                                    setOption={setOption}
-                                  />
-                                );
-                              })
-                              : ""}
-
-                            {survey.response_type_id === 3 ? (
-                              <textarea
-                                placeholder="Type here"
-                                style={{ width: "100%" }}
-                                name=""
-                                id=""
-                                rows="8"
-                              ></textarea>
-                            ) : (
-                              ""
-                            )}
-                            <div className="mb-2"></div>
-                          </div>
-                        );
-                      }
-                    })} */}
 
                   {finishedSurvey ? (
                     <div className="text-center">
@@ -306,18 +316,18 @@ const ViewSurvey = (props) => {
                   src={require("./images/image1.png")}
                   alt=""
                 />
-                <h5>Customer Survey experience</h5>
+                <h5>{surveyDescription}</h5>
                 <label className="opacity no-margin" htmlFor="">
                   End date:
                 </label>
-                <p>Apr 1, 2021 (in 22 days)</p>
+                <p>{endDate}</p>
                 <label className="opacity no-margin" htmlFor="">
                   No of Questions:
                 </label>
-                <p>20 questions</p>
+                <p>{numberOfQuestions} questions</p>
                 <h6 className="bold">
-                  Complete to earn 10,500{" "}
-                  <span className="ruby-tag">Rubies</span>
+                  {/* Complete to earn 10,500{" "}
+                  <span className="ruby-tag">Rubies</span> */}
                 </h6>
               </div>
             </div>

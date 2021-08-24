@@ -233,6 +233,8 @@ const Sweepstake_subMenu = () => {
 }
 
 
+
+
 const Experience_Travel_subMenu = () => {
 
   const [path, setPath] = useState("");
@@ -254,9 +256,38 @@ const Experience_Travel_subMenu = () => {
         <li className={path.indexOf("pages/experience&travel/travel") > -1 ? "active" : ""}>
           <Link
             to={`${process.env.PUBLIC_URL}/pages/experience&travel/travel`}
-
           >
             TRAVEL
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  )
+}
+
+const Entertainment_subMenu = () => {
+
+  const [path, setPath] = useState("");
+
+  useEffect(() => {
+    setPath(window.location.href);
+  });
+
+  return (
+    <nav className="main-nav w-100">
+      <ul className="menu sf-arrows">
+        <li className={path.indexOf("pages/entertainment/cinema") > -1 ? "active" : ""}>
+          <Link
+            to={`${process.env.PUBLIC_URL}/pages/entertainment/cinema`}
+          >
+            CINEMA
+          </Link>
+        </li>
+        <li className={path.indexOf("pages/entertainment/events") > -1 ? "active" : ""}>
+          <Link
+            to={`${process.env.PUBLIC_URL}/pages/entertainment/events`}
+          >
+            EVENTS
           </Link>
         </li>
       </ul>
@@ -274,5 +305,6 @@ export default {
   Meals_subMenu,
   Survey_subMenu,
   Sweepstake_subMenu,
-  Experience_Travel_subMenu
+  Experience_Travel_subMenu,
+  Entertainment_subMenu
 }
