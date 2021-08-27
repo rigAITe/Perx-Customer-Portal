@@ -13,6 +13,7 @@ import { LoaderContextController } from "../context/Loading";
 import { AuctionContextController } from "../context/Auctions";
 import { SurveyContextController } from "../context/Survey";
 import { EventContextController } from "../context/Event";
+import { CinemaContextController } from '../context/Cinema'
 
 let ProductsPages = React.lazy(() => import("./products-route"));
 let CategoriesPages = React.lazy(() => import("./categories-route"));
@@ -34,26 +35,28 @@ export default function Routes() {
             <AuctionContextController>
               <LoginContextController>
                 <EventContextController>
-                  <React.Suspense fallback={<span></span>}>
-                    <Switch>
-                      <Route
-                        path={`${process.env.PUBLIC_URL}/products`}
-                        component={ProductsPages}
-                      />
-                      <Route
-                        path={`${process.env.PUBLIC_URL}/categories`}
-                        component={CategoriesPages}
-                      />
-                      <Route
-                        path={`${process.env.PUBLIC_URL}/pages`}
-                        component={OthersPages}
-                      />
-                      <Route
-                        path={`${process.env.PUBLIC_URL}/`}
-                        component={HomePage}
-                      />
-                    </Switch>
-                  </React.Suspense>
+                  <CinemaContextController>
+                    <React.Suspense fallback={<span></span>}>
+                      <Switch>
+                        <Route
+                          path={`${process.env.PUBLIC_URL}/products`}
+                          component={ProductsPages}
+                        />
+                        <Route
+                          path={`${process.env.PUBLIC_URL}/categories`}
+                          component={CategoriesPages}
+                        />
+                        <Route
+                          path={`${process.env.PUBLIC_URL}/pages`}
+                          component={OthersPages}
+                        />
+                        <Route
+                          path={`${process.env.PUBLIC_URL}/`}
+                          component={HomePage}
+                        />
+                      </Switch>
+                    </React.Suspense>
+                  </CinemaContextController>
                 </EventContextController>
               </LoginContextController>
             </AuctionContextController>

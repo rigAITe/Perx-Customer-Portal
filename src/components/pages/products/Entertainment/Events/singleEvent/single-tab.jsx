@@ -16,10 +16,7 @@ function SingleTab(props) {
       </TabList>
       <TabPanel className="tab-pane fade">
         <div className="text-dark product-desc-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam,
-            quod. Aperiam, cupiditate ad? Sed quae eos, quaerat laudantium
-            laboriosam dolor culpa suscipit iusto excepturi et voluptas at eius
-            rem dolores?
+           {props.detail}
         </div>
       </TabPanel>
     </Tabs>

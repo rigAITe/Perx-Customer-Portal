@@ -29,7 +29,7 @@ function ListCinemaProducts(props) {
     <>
       <div className={`product-default ${addClass}`}>
         <figure>
-          <Link to={`${process.env.PUBLIC_URL}/products/default`}>
+          {/* <Link to={`${process.env.PUBLIC_URL}/products/default`}> */}
             <span>
               <img
                 src={imageA}
@@ -44,7 +44,7 @@ function ListCinemaProducts(props) {
                 alt="product"
               />
             </span>
-          </Link>
+          {/* </Link> */}
 
           <Link to={buttonLink} className="btn-quickview" title="View Branches">
             {buttonTitle}

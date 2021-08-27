@@ -29,14 +29,14 @@ function ListCinemaProducts(props) {
     <>
       <div className={`product-default ${addClass}`}>
         <figure>
-          <Link to={`${process.env.PUBLIC_URL}/products/default`}>
+          {/* <Link to={`${process.env.PUBLIC_URL}/products/default`}> */}
             <span>
               <img src={imageA} className="first-image" alt="product" />
             </span>
             <span className="product-image-hover">
-              <img src={silverbird} className="last-image" alt="product" />
+              <img src={props.featuredImage} className="last-image" alt="product" />
             </span>
-          </Link>
+          {/* </Link> */}
 
           <Link to={buttonLink} className="btn-quickview" title="View Branches">
             {buttonTitle}
@@ -45,14 +45,14 @@ function ListCinemaProducts(props) {
         <div className="product-details">
           <div className="price-box width-100">
             <div>
-              <p className="medium-text text-uppercase">Genesis Cinema Ikeja</p>
+              <p className="medium-text text-uppercase">{props.cinema}</p>
             </div>
             <div className="bold my-3 small-text text-dark">
-             Zack Zyder's Justice League
+             {props.title}
             </div>
             <div className="">
-              <div className="pb-2 muted-text small-text">Action/Adventure - 4h 2m</div>
-              <div className="muted-text small-text">State: Lagos</div>
+              <div className="pb-2 muted-text small-text">{props.genre} - {props.duration}</div>
+              {/* <div className="muted-text small-text">State: Lagos</div> */}
             </div>
           </div>
         </div>

@@ -7,10 +7,16 @@ import GridProduct from "./grid-singlecinema-products";
 import "../cinema.css";
 
 function SingleCinema(props) {
+  
   const [curPage, setCurPage] = useState(1);
   const [layout, setLayout] = useState("grid");
   const [productCount, setProductCount] = useState(0);
   const [displayCount, setDisplayCount] = useState(12);
+  const [singleData, setSingleData] = useState()
+
+  useEffect(() => {
+    setSingleData((props.location.query))
+  }, [])
 
   // to use lazy loading
   // useEffect(() => {
@@ -78,6 +84,7 @@ function SingleCinema(props) {
               productType="flex-grid"
               productCount={onChangeProductCount}
               displayCount={displayCount}
+              data={singleData}
             />
           </div>
         </div>

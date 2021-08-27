@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { connect } from "react-redux";
 
 import ProductTypeOne from "./ListProducts";
@@ -8,9 +8,11 @@ import movie1 from "../../assets/movies/movie1.svg";
 import movie2 from "../../assets/movies/movie2.svg";
 import movie3 from "../../assets/movies/movie3.svg";
 import movie4 from "../../assets/movies/movie4.svg";
+import { LoaderContext } from "../../../../../../context/Loading";
 
 function GridProduct(props) {
   const { displayCount, cols = 3, productType = "", curPage, discount } = props;
+  const { toggleLoading } = useContext(LoaderContext)
   let subClass = getClass(cols);
   let products = props.products;
   products = shopFilterProducts(products, props.filter);
@@ -33,14 +35,25 @@ function GridProduct(props) {
     return subClass;
   }
 
+  const [data, setData] = useState([])
+  const [cinema, setCinema] = useState()
+
+  useEffect(() => {
+    toggleLoading(true)
+    if (props.data != undefined) {
+      toggleLoading(false)
+      setData(props.data.data.tickets)
+      setCinema(props.data.cinema)
+    }
+  })
+
   return (
     <div
-      className={`product-group ${
-        productType === "flex-grid" && props.type === "grid"
+      className={`product-group ${productType === "flex-grid" && props.type === "grid"
           ? "row mx-0 divide-line up-effect"
           : "row row-sm position-relative " +
-            (props.type === "list" ? "product-intro list-style" : "")
-      } `}
+          (props.type === "list" ? "product-intro list-style" : "")
+        } `}
     >
       {products.length === 0 ? (
         <h4 className="mt-3 ml-4 text-dark" style={{ fontWeight: 400 }}>
@@ -50,102 +63,26 @@ function GridProduct(props) {
       ) : (
         ""
       )}
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie1}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie2}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie3}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie4}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie3}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie4}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie3}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={movie4}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
+      {data.map((res) =>
+        <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
+          <div className="skel-pro skel-pro-grid"></div>
+          <ProductTypeOne
+            buttonTitle={buttonTitle}
+            buttonLink={buttonLink}
+            imageA={res.artworkThumbnail}
+            discount
+            addClass="inner-quickview inner-icon pl-3 pr-3"
+            product={null}
+            key={"flex-grid"}
+            title={res.title}
+            duration={res.duration}
+            genre={res.genre}
+            cinema={cinema}
+            featuredImage={res.featuredImage}
+            // thumbnail={}
+          />
+        </div>
+      )}
     </div>
   );
 }

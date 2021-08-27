@@ -65,7 +65,7 @@ function SingleEvent(props) {
                 </div>
               </div>
 
-              <SingleTab product={null} />
+              {/* <SingleTab product={null} /> */}
             </div>
           </div>
         </div>

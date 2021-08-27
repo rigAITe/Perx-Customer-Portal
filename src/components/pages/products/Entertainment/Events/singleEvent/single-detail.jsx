@@ -10,11 +10,14 @@ import { LoaderContext } from "../../../../../../context/Loading.js";
 import "./singleEvent.css";
 import AddRow from "./AddRow.jsx";
 
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+
 function SingleDetail(props) {
   const { toggleLoading } = useContext(LoaderContext);
 
   const [data, setData] = useState([])
   const [ticket, setTicket] = useState([])
+  const [description, setDescription] = useState()
   const { loading } = useContext(LoaderContext);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { wishlist, product, isSticky = false, auction, auction_bid } = props;
@@ -67,16 +70,11 @@ function SingleDetail(props) {
       toggleLoading(false);
       setData(props.data)
       setTicket(props.data.ticketClassses)
+      setDescription(props.data.description)
     }
-  }, [props.data]);
+  });
 
-  console.log('DATA ', (ticket))
-
-  const [value, setValue] = useState(1)
-
-  const onChange = (e) => {
-    setValue({[e.target.name]: e.target.value})
-  }
+  // console.log('DATA ', (ticket))
 
 
   return (
@@ -85,10 +83,10 @@ function SingleDetail(props) {
       <div className="skel-pro skel-detail"></div>
       <div className="product-single-details">
         <div className="col-md-8 row less-margin">
-          <h4>{props.data.title}</h4>
+          <h4>{data.title}</h4>
         </div>
         <div className="muted-text bold">Date:</div>
-        <div className="muted-text bold">{props.data.date}</div>
+        <div className="muted-text bold">{data.date}</div>
         <h5 className="mt-3">Tickets</h5>
         <div className="p-0 col-lg-12">
           <div className="wishlist-table-container">
@@ -104,18 +102,22 @@ function SingleDetail(props) {
               </thead>
               <tbody>
                 {
-                  ticket.map((res) =>
-                    <AddRow
-                      title={res.title}
-                      venue={res.venue}
-                      price={res.price}
-                      point_name={res.point_name}
-                      value={value}
-                      onChange={onChange}
-                      id={res.classid}
-                      key={res.classid}
-                    />
-                  )
+                  ticket.map((res) =>{
+                    res.quantity = 1
+                    // setValue( res.quantity )
+                    console.log('This is the res ', res.quantity)
+                    return (
+                      <AddRow
+                        title={res.title}
+                        venue={res.venue}
+                        price={res.price}
+                        point_name={res.point_name}
+                        // value={res.quantity}
+                        id={res.classid}
+                        key={res.classid}
+                      />
+                    )
+                  })
                 }
               </tbody>
               <tfoot>
@@ -172,6 +174,22 @@ function SingleDetail(props) {
             </Link>
           </div>
         </div>
+      </div>
+      <div>
+        <Tabs
+          className={`mb-5 product-single-tabs`}
+          selectedTabClassName="active"
+          selectedTabPanelClassName="show"
+        >
+          <TabList className="nav nav-tabs nav-border-anim">
+            <Tab className="nav-link">More Info</Tab>
+          </TabList>
+          <TabPanel className="tab-pane fade">
+            {/* <div className="text-dark product-desc-content"> */}
+              {description}
+            {/* </div> */}
+          </TabPanel>
+        </Tabs>
       </div>
       {showSuccessModal ? (
         <SuccessfulBidModal

@@ -106,6 +106,7 @@ function GridProduct(props) {
             // key={"flex-grid"}
             title={event.title}
             date={event.date}
+            // eventArtwork={event.eventArtwork}
           />
         </div>
       )}

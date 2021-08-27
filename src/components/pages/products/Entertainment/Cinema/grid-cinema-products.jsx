@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { connect } from "react-redux";
-
 import ProductTypeOne from "./ListProducts";
-
 import { shopFilterProducts } from "../../../../../../src/utils";
 import filmhouse from "./../assets/filmhouse.svg";
 import genesisCinema from "./../assets/genesisCinema.svg";
 import imax from "./../assets/imax.svg";
 import silverbird from "./../assets/silverbird.svg";
+import { CinemaContext } from "../../../../../context/Cinema";
 
 function GridProduct(props) {
+
+  const { getCinemaList, cinemas } = useContext(CinemaContext)
   const { displayCount, cols = 3, productType = "", curPage, discount } = props;
   let subClass = getClass(cols);
   let products = props.products;
@@ -33,14 +34,29 @@ function GridProduct(props) {
     return subClass;
   }
 
+  const [cinemasList, setCinemasList] = useState([])
+
+  useEffect(() => {
+    getCinemaList();
+  }, [])
+
+  useEffect(() => {
+    if (cinemas.data !== null) {
+      if (cinemas.success == true && cinemas.status == 1) {
+        setCinemasList(cinemas.data)
+        console.log(cinemas.data)
+      }
+    }
+  })
+
+
   return (
     <div
-      className={`product-group ${
-        productType === "flex-grid" && props.type === "grid"
-          ? "row mx-0 divide-line up-effect"
-          : "row row-sm position-relative " +
-            (props.type === "list" ? "product-intro list-style" : "")
-      } `}
+      className={`product-group ${productType === "flex-grid" && props.type === "grid"
+        ? "row mx-0 divide-line up-effect"
+        : "row row-sm position-relative " +
+        (props.type === "list" ? "product-intro list-style" : "")
+        } `}
     >
       {products.length === 0 ? (
         <h4 className="mt-3 ml-4 text-dark" style={{ fontWeight: 400 }}>
@@ -50,54 +66,24 @@ function GridProduct(props) {
       ) : (
         ""
       )}
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={filmhouse}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={silverbird}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={imax}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
-      <div className="col-6 col-md-3 p-0" key={"flex-grid"}>
-        <div className="skel-pro skel-pro-grid"></div>
-        <ProductTypeOne
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          imageA={genesisCinema}
-          discount
-          addClass="inner-quickview inner-icon pl-3 pr-3"
-          product={null}
-          key={"flex-grid"}
-        />
-      </div>
+      {cinemasList.map((res) =>
+        <div className="col-6 col-md-3 p-0">
+          <div className="skel-pro skel-pro-grid"></div>
+          <ProductTypeOne
+            buttonTitle={buttonTitle}
+            // buttonLink={buttonLink}
+            imageA={filmhouse}
+            discount
+            addClass="inner-quickview inner-icon pl-3 pr-3"
+            product={null}
+            key={"flex-grid"}
+            name={res.name}
+            location={res.location}
+            state={res.state}
+            data={res}
+          />
+        </div>
+      )}
     </div>
   );
 }
