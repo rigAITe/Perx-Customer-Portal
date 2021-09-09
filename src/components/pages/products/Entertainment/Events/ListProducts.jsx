@@ -29,14 +29,14 @@ function ListCinemaProducts(props) {
     <>
       <div className={`product-default ${addClass}`}>
         <figure>
-          <Link to={`${process.env.PUBLIC_URL}/products/default`}>
+          {/* <Link to={`${process.env.PUBLIC_URL}/products/default`}> */}
             <span>
               <img src={imageA} className="first-image" alt="product" />
             </span>
             <span className="product-image-hover">
               <img src={event1} className="last-image" alt="product" />
             </span>``
-          </Link>
+          {/* </Link> */}
 
           <Link to={{pathname:"/pages/entertainment/event/single/3", query: props.data}} className="btn-quickview" title="View Branches">
             {buttonTitle}

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 
-const AddRow = (props) => {
+const AddCinemaPrice = (props) => {
 
   const [value, setValue] = useState(1)
-  const [subTotal, setSubTotal] = useState(props.price)
+  const [subTotal, setSubTotal] = useState(props.data.price)
   const [totalValue, setTotalValue] = useState()
   const [ar, setAr] = useState([])
 
@@ -13,12 +13,12 @@ const AddRow = (props) => {
   }
 
   const add = () => {
-    setSubTotal(props.price * (value + 1))
+    setSubTotal(props.data.price * (value + 1))
     setValue(value + 1)
   }
 
   const subtract = () => {
-    setSubTotal(props.price * (value - 1))
+    setSubTotal(props.data.price * (value - 1))
     setValue(value - 1)
   }
 
@@ -41,24 +41,20 @@ const AddRow = (props) => {
     console.log(x)
   }
 
-  // console.log(props.form)
-
   const data = {
     signature: props.data.signature,
     points: subTotal,
     quantity: value,
+    type: props.data.type
   }
 
   return (
     <tr onMouseEnter={handleMouseOver} onMouseLeave={handleMouseOut}>
-      <td>{props.title}</td>
-      <td>
-        <div>{props.venue}</div>
-      </td>
+      <td>{props.data.type}</td>
       <td>
         <div>
-          {props.price}
-          <span class="ruby-tag"> {props.point_name}</span>
+          {props.data.price}
+          <span class="ruby-tag"> {props.data.point_name}</span>
         </div>
       </td>
       <td>
@@ -80,7 +76,7 @@ const AddRow = (props) => {
                 max="5"
                 value={value}
                 onChange={onChange}
-                name={props.title}
+                name={props.data.types}
               />
               <span className="input-group-btn input-group-append">
 
@@ -97,7 +93,7 @@ const AddRow = (props) => {
       <td>
         <div>
           {subTotal}
-          <span class="ruby-tag"> {props.point_name}</span>
+          <span class="ruby-tag"> {props.data.point_name}</span>
         </div>
       </td>
       <td>
@@ -111,7 +107,7 @@ const AddRow = (props) => {
   )
 }
 
-export default AddRow
+export default AddCinemaPrice
 
 {/* <figure> */ }
 {/* <Link to={`${process.env.PUBLIC_URL}/products/default`}> */ }

@@ -32,6 +32,12 @@ function SingleMovie(props) {
     return auctionRefNo;
   };
 
+  // const [data, setData] = useState()
+  // useEffect(() => {
+  //   setData(props.location.query)
+  // })
+
+
   return (
     <>
       {loading ? <Loading /> : ""}
@@ -52,14 +58,15 @@ function SingleMovie(props) {
                   <HorizontalThumbnail
                     addClass="col-lg-4 col-md-4"
                     product={{ image: [1] }}
+                    image={props.location.query.data.artworkThumbnail}
                   />
                   <div className="col-lg-8 col-md-8">
-                    <SingleDetail auction product={getProduct} />
+                    <SingleDetail auction product={getProduct} data={props.location.query} />
                   </div>
                 </div>
               </div>
 
-              <SingleTab product={null} />
+              {/* <SingleTab product={null} /> */}
             </div>
           </div>
         </div>

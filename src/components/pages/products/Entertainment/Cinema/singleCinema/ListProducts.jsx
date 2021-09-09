@@ -24,21 +24,23 @@ function ListCinemaProducts(props) {
       props.addToWishList(props.product);
     }
   };
+  
+  // console.log('CINEMA ', props.data)
 
   return (
     <>
       <div className={`product-default ${addClass}`}>
         <figure>
           {/* <Link to={`${process.env.PUBLIC_URL}/products/default`}> */}
-            <span>
-              <img src={imageA} className="first-image" alt="product" />
-            </span>
-            <span className="product-image-hover">
-              <img src={props.featuredImage} className="last-image" alt="product" />
-            </span>
+          <span>
+            <img src={imageA} className="first-image" alt="product" />
+          </span>
+          <span className="product-image-hover">
+            <img src={props.featuredImage} className="last-image" alt="product" />
+          </span>
           {/* </Link> */}
 
-          <Link to={buttonLink} className="btn-quickview" title="View Branches">
+          <Link to={{pathname:"/pages/entertainment/movie/single/1", query: {data: props.data, cinema: props.cinema}}} className="btn-quickview" title="View Branches">
             {buttonTitle}
           </Link>
         </figure>
@@ -48,7 +50,7 @@ function ListCinemaProducts(props) {
               <p className="medium-text text-uppercase">{props.cinema}</p>
             </div>
             <div className="bold my-3 small-text text-dark">
-             {props.title}
+              {props.title}
             </div>
             <div className="">
               <div className="pb-2 muted-text small-text">{props.genre} - {props.duration}</div>

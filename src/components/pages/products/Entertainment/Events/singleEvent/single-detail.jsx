@@ -9,8 +9,11 @@ import SuccessfulBidModal from "../../../../../common/modals/SuccessfulBidModal.
 import { LoaderContext } from "../../../../../../context/Loading.js";
 import "./singleEvent.css";
 import AddRow from "./AddRow.jsx";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import UserDetail from "./UserDetail.jsx";
+import EventSuccessModal from "../../../../../common/modals/EventSuccessModal.jsx";
 
 function SingleDetail(props) {
   const { toggleLoading } = useContext(LoaderContext);
@@ -74,12 +77,20 @@ function SingleDetail(props) {
     }
   });
 
-  // console.log('DATA ', (ticket))
+  const [modal, setModal] = useState(false);
+  const [visible, setVisible] = useState(false)
+  const [info, setInfo] = useState([])
+  const [showSuccess, setShowSuccess] = useState(false)
 
+  const toggle = (x) => {
+    setModal(!modal)
+    setInfo(x)
+  };
+
+  console.log('visibility ', info)
 
   return (
     <>
-      {/* {loading ? <Loading /> : ""} */}
       <div className="skel-pro skel-detail"></div>
       <div className="product-single-details">
         <div className="col-md-8 row less-margin">
@@ -102,76 +113,23 @@ function SingleDetail(props) {
               </thead>
               <tbody>
                 {
-                  ticket.map((res) =>{
-                    res.quantity = 1
-                    // setValue( res.quantity )
-                    console.log('This is the res ', res.quantity)
+                  ticket.map((res) => {
                     return (
                       <AddRow
                         title={res.title}
                         venue={res.venue}
                         price={res.price}
                         point_name={res.point_name}
-                        // value={res.quantity}
                         id={res.classid}
                         key={res.classid}
+                        data={res}
+                        toggle={toggle}
                       />
                     )
                   })
                 }
               </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="5" className="clearfix">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <label htmlFor="">Email Address</label>
-                        <input
-                          placeholder="Email Address"
-                          className="form-control"
-                          type="text"
-                        />
-                      </div>
-                      <div className="col-md-6">
-                        <label htmlFor="">Phone Number</label>
-                        <input
-                          placeholder="Phone Number"
-                          className="form-control"
-                          type="text"
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="d-flex mb-1 justify-content-end col-md-12">
-                        <Link
-                          to={`${process.env.PUBLIC_URL}/categories/full-width`}
-                          className="btn btn-outline-primary col-md-4"
-                        >
-                          Update
-                        </Link>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tfoot>
             </table>
-          </div>
-        </div>
-
-        <div className="mt-3">
-          <div className="text-dark bold medium-text">Grand Total</div>
-          <div className="text-dark bold mb-2">
-            10,500
-            <span class="ruby-tag"> Rubies</span>
-          </div>{" "}
-          <div>
-            {" "}
-            <Link
-              to={`${process.env.PUBLIC_URL}/categories/full-width`}
-              className="btn btn-primary"
-            >
-              Redeem
-            </Link>
           </div>
         </div>
       </div>
@@ -185,17 +143,26 @@ function SingleDetail(props) {
             <Tab className="nav-link">More Info</Tab>
           </TabList>
           <TabPanel className="tab-pane fade">
-            {/* <div className="text-dark product-desc-content"> */}
-              {description}
-            {/* </div> */}
+            {description}
           </TabPanel>
         </Tabs>
       </div>
-      {showSuccessModal ? (
-        <SuccessfulBidModal
-          // amount={inputs.amount}
-          messageTitle="Bid Submitted Successully"
-          messageBody="Your bid has been submitted"
+      <div>
+        <Modal isOpen={modal} toggle={toggle} contentClassName="address-modal">
+          <ModalHeader toggle={toggle} charCode="x">User Information</ModalHeader>
+          <ModalBody>
+            <UserDetail
+              info={info}
+              setModal={setModal}
+              setShowSuccess={setShowSuccess}
+            />
+          </ModalBody>
+        </Modal>
+      </div>
+      {showSuccess ? (
+        <EventSuccessModal
+          messageTitle="Event Redeemed Successfully"
+          messageBody="Your redeem was submitted successfully"
         />
       ) : (
         ""

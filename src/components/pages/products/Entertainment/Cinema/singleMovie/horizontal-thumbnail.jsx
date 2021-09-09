@@ -9,7 +9,7 @@ function HorizontalThumbnail(props) {
   const [photoIndex, setPindex] = useState(0);
   const [open, setOpen] = useState(false);
   const { addClass = "", product } = props;
-  const images = product.image;
+  const images = props.image;
 
   const openLightBox = () => {
     let productCarousel = document.querySelector(".product-single-carousel");
@@ -49,7 +49,7 @@ function HorizontalThumbnail(props) {
                   index={index}
                 >
                   <Magnifier
-                    imageSrc={movie5}
+                    imageSrc={props.image}
                     imageAlt="product"
                     mouseActivation="hover"
                     cursorStyleActive="crosshair"
@@ -66,18 +66,18 @@ function HorizontalThumbnail(props) {
         </span>
       </div>
 
-      <div className="prod-thumbnail row owl-dots" id="carousel-quick-dots">
+      {/* <div className="prod-thumbnail row owl-dots" id="carousel-quick-dots">
         {product.image
           ? product.image.map((imageSource, index) => (
               <div
                 className="col-3 p-0 owl-dot active"
                 key={"prod-nav" + index}
               >
-                <img src={movie5} alt="product" />
+                <img src={props.image} alt="product" />
               </div>
             ))
           : ""}
-      </div>
+      </div> */}
 
       {open && (
         <Lightbox

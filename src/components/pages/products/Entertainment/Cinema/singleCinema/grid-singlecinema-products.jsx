@@ -79,6 +79,7 @@ function GridProduct(props) {
             genre={res.genre}
             cinema={cinema}
             featuredImage={res.featuredImage}
+            data={res}
             // thumbnail={}
           />
         </div>

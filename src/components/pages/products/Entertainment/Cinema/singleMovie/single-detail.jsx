@@ -1,390 +1,173 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
-
-import { findIndex, getPrice } from "../../../../../../../src/utils/index.js";
-import LoaderContext from "../../../../../../context/Loading.js";
-import Loading from "../../../../../features/Loader/Loading.jsx";
+import React, { useEffect, useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { findIndex, getPrice } from '../../../../../../../src/utils/index.js'
+import LoaderContext from '../../../../../../context/Loading.js'
+import Loading from '../../../../../features/Loader/Loading.jsx'
 import {
   isStateHandled,
   formatNumber,
-} from "../../../../../../../src/utils/index.js";
-import swal from "sweetalert";
-import SuccessfulBidModal from "../../../../../common/modals/SuccessfulBidModal.jsx";
-
-import "./singleMovie.css";
+} from '../../../../../../../src/utils/index.js'
+import swal from 'sweetalert'
+import SuccessfulBidModal from '../../../../../common/modals/SuccessfulBidModal.jsx'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import './singleMovie.css'
+import SingleDetailTime from './single-detail-time.jsx'
+import AddCinemePrice from './AddCinemaPrice'
+import UserDetailCinema from './UserDetailCinema'
 
 function SingleDetail(props) {
-  const { loading } = useContext(LoaderContext);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const { wishlist, product, isSticky = false, auction, auction_bid } = props;
-  let isInWishlist = findIndex(wishlist, product.id) ? true : false;
+  const { toggleLoading } = useContext(LoaderContext)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const { wishlist, product, isSticky = false, auction, auction_bid } = props
+  let isInWishlist = findIndex(wishlist, product.id) ? true : false
   let maxPrice,
-    minPrice = 0;
+    minPrice = 0
 
   if (product.variants) {
-    maxPrice = getPrice(product.variants);
-    minPrice = getPrice(product.variants, "min");
+    maxPrice = getPrice(product.variants)
+    minPrice = getPrice(product.variants, 'min')
   }
 
   const selectGroup = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (props.noSelect === undefined)
       document
-        .querySelector(".product-single-gallery .owl-item.active img")
-        .setAttribute("src", e.currentTarget.getAttribute("data-src"));
+        .querySelector('.product-single-gallery .owl-item.active img')
+        .setAttribute('src', e.currentTarget.getAttribute('data-src'))
 
-    e.currentTarget.parentElement.parentElement.querySelector(".active") &&
+    e.currentTarget.parentElement.parentElement.querySelector('.active') &&
       e.currentTarget.parentElement.parentElement
-        .querySelector(".active")
-        .classList.remove("active");
+        .querySelector('.active')
+        .classList.remove('active')
     e.currentTarget.parentElement &&
-      e.currentTarget.parentElement.classList.add("active");
-  };
+      e.currentTarget.parentElement.classList.add('active')
+  }
 
   function addToCart(e) {
-    e.preventDefault();
-    let val = 1;
-    if (e.currentTarget.parentElement.querySelector(".horizontal-quantity"))
+    e.preventDefault()
+    let val = 1
+    if (e.currentTarget.parentElement.querySelector('.horizontal-quantity'))
       val = parseInt(
         e.currentTarget.parentElement
-          .querySelector(".horizontal-quantity")
-          .getAttribute("value")
-      );
-    props.quickAddToCart(props.product, val);
+          .querySelector('.horizontal-quantity')
+          .getAttribute('value')
+      )
+    props.quickAddToCart(props.product, val)
   }
 
   function onWithWishClick(e) {
     if (!isInWishlist) {
-      e.preventDefault();
-      props.addToWishList(props.product);
+      e.preventDefault()
+      props.addToWishList(props.product)
     }
+  }
+
+  const [title, setTitle] = useState('')
+  const [data, setData] = useState([])
+  const [dates, setDates] = useState([])
+  const [modal, setModal] = useState(false)
+
+  console.log('MAJOR DATA ', props.data)
+  // console.lo
+
+  useEffect(() => {
+    toggleLoading(true)
+    axios
+      .get(`catalogue/cinema/movie/${props.data.data.movie_id}`)
+      .then((res) => {
+        toggleLoading(false)
+        setTitle(props.data.data.title)
+        setData(res.data.data)
+      })
+      .catch((err) => {
+        toggleLoading(false)
+        swal({
+          title: 'Oops!',
+          text: err.response.data.message,
+          icon: 'error',
+          button: 'Ok',
+        })
+      })
+  }, [])
+
+  const [cinemaPricing, setCinemaPricing] = useState([])
+  const [info, setInfo] = useState()
+  const [time, setTime] = useState()
+  const [showSuccess, setShowSuccess] = useState(false)
+
+  const pricing = (x, y) => {
+    setCinemaPricing(x)
+    setTime(y)
+  }
+
+  const toggle = (x) => {
+    setModal(!modal)
+    setInfo(x)
   }
 
   return (
     <>
-      {/* {loading ? <Loading /> : ""} */}
-      <div className="skel-pro skel-detail"></div>
-      <div className="product-single-details">
-        <div className="col-md-8 row less-margin">
-          <h4>Zack Snyder's Justice League</h4>
+      <div className='skel-pro skel-detail'></div>
+      <div className='product-single-details'>
+        <div className='col-md-8 row less-margin'>
+          <h4>{title}</h4>
         </div>
-        <div className="black-text bold">Show time</div>
-        <div className="my-3">
-          <div className="mb-2">
-            <p className="text-dark small-text">Friday, 12th April:</p>
-            <div>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary active-btn`}
-              >
-                6:10am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                8:35am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                14:35pm
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                8:35am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                14:35pm
-              </button>
-            </div>
-          </div>
-          <div className="mb-2">
-            <p className="text-dark small-text">Saturday, 13th April:</p>
-            <div>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary active-btn`}
-              >
-                6:10am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                8:35am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                14:35pm
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                8:35am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                14:35pm
-              </button>
-            </div>
-          </div>
-          <div className="mb-2">
-            <p className="text-dark small-text">Sunday, 14th April:</p>
-            <div>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary active-btn`}
-              >
-                6:10am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                8:35am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                14:35pm
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                8:35am
-              </button>
-              <button
-                id="pickup"
-                type="button"
-                className={`mr-2 btn btn-outline-secondary`}
-              >
-                14:35pm
-              </button>
-            </div>
-          </div>
-        </div>
+        <div className='black-text bold'>Show time</div>
 
-        <h5 className="mt-3">Tickets</h5>
-        <div className="p-0 col-lg-12">
-          <div className="wishlist-table-container">
-            <table className="table table-order table-wishlist">
+        {data.map((res) => (
+          <SingleDetailTime data={res} pricing={pricing} />
+        ))}
+        <h5 className='mt-3'>Tickets</h5>
+        <div className='p-0 col-lg-12'>
+          <div className='wishlist-table-container'>
+            <table className='table table-order table-wishlist'>
               <thead>
                 <tr>
-                  <th>Person</th>
+                  <th>Type</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Subtotal</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Adult</td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="d-flex">
-                      <div className={`mt-1 product-single-qty`}>
-                        <div className="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                          <span className="input-group-btn input-group-prepend">
-                            <button
-                              className="btn btn-outline btn-down-icon bootstrap-touchspin-down"
-                              type="button"
-                            ></button>
-                          </span>
-                          <input
-                            className="horizontal-quantity form-control"
-                            type="number"
-                            min="1"
-                            max="5"
-                            value="1"
-                          />
-                          <span className="input-group-btn input-group-append">
-                            <button
-                              className="btn btn-outline btn-up-icon bootstrap-touchspin-up"
-                              type="button"
-                            ></button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Student</td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="d-flex">
-                      <div className={`mt-1 product-single-qty`}>
-                        <div className="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                          <span className="input-group-btn input-group-prepend">
-                            <button
-                              className="btn btn-outline btn-down-icon bootstrap-touchspin-down"
-                              type="button"
-                            ></button>
-                          </span>
-                          <input
-                            className="horizontal-quantity form-control"
-                            type="number"
-                            min="1"
-                            max="5"
-                            value="1"
-                          />
-                          <span className="input-group-btn input-group-append">
-                            <button
-                              className="btn btn-outline btn-up-icon bootstrap-touchspin-up"
-                              type="button"
-                            ></button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Children</td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="d-flex">
-                      <div className={`mt-1 product-single-qty`}>
-                        <div className="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                          <span className="input-group-btn input-group-prepend">
-                            <button
-                              className="btn btn-outline btn-down-icon bootstrap-touchspin-down"
-                              type="button"
-                            ></button>
-                          </span>
-                          <input
-                            className="horizontal-quantity form-control"
-                            type="number"
-                            min="1"
-                            max="5"
-                            value="1"
-                          />
-                          <span className="input-group-btn input-group-append">
-                            <button
-                              className="btn btn-outline btn-up-icon bootstrap-touchspin-up"
-                              type="button"
-                            ></button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      10,500
-                      <span class="ruby-tag"> Rubies</span>
-                    </div>
-                  </td>
-                </tr>
+                {cinemaPricing == undefined
+                  ? ''
+                  : cinemaPricing.map((res) => (
+                      <AddCinemePrice data={res} toggle={toggle} />
+                    ))}
               </tbody>
-
-              <tfoot>
-                <tr>
-                  <td colSpan="4" className="clearfix">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <label htmlFor="">Full Name</label>
-                        <input className="form-control" type="text" />
-                      </div>
-                      <div className="d-flex mb-1 align-items-end col-md-6">
-                        <Link
-                          to={`${process.env.PUBLIC_URL}/categories/full-width`}
-                          className="btn btn-outline-primary"
-                        >
-                          Update
-                        </Link>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>
-
-        <div className="mt-3">
-          <div className="text-dark bold medium-text">Grand Total</div>
-          <div className="text-dark bold mb-2">
-            10,500
-            <span class="ruby-tag"> Rubies</span>
-          </div>{" "}
-          <div>
-            {" "}
-            <Link
-              to={`${process.env.PUBLIC_URL}/categories/full-width`}
-              className="btn btn-primary"
-            >
-              Redeem
-            </Link>
-          </div>
-        </div>
+      </div>
+      <div>
+        <Modal isOpen={modal} toggle={toggle} contentClassName='address-modal'>
+          <ModalHeader toggle={toggle} charCode='x'>
+            User Information
+          </ModalHeader>
+          <ModalBody>
+            <UserDetailCinema
+              info={info}
+              time={time}
+              cinema={props.data.cinema}
+              setModal={setModal}
+              setShowSuccess={setShowSuccess}
+            />
+          </ModalBody>
+        </Modal>
       </div>
       {showSuccessModal ? (
         <SuccessfulBidModal
           // amount={inputs.amount}
-          messageTitle="Bid Submitted Successully"
-          messageBody="Your bid has been submitted"
+          messageTitle='Bid Submitted Successully'
+          messageBody='Your bid has been submitted'
         />
       ) : (
-        ""
+        ''
       )}
     </>
-  );
+  )
 }
 
-export default SingleDetail;
+export default SingleDetail

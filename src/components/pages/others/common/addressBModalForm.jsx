@@ -66,10 +66,7 @@ export  const AddressBookModalForm = ({ address, state, stateID, fetchAddress, m
   return (
     <>
       <form style={{marginBottom: 0}} onSubmit={editAddress}>
-      <ToastContainer
-          // pauseOnFocusLoss
-          // pauseOnHover
-          />
+      <ToastContainer/>
         <div className="card-bodie">
           <div className="row">
             <div className="col-md-6">
